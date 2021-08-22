@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/uhoh/.config/neofetch'
+let g:netrw_dirhist_5='/home/uhoh/.config/polybar/polybar-scripts'
+let g:netrw_dirhist_4='/home/uhoh/wizehive/wiz-276-view-wont-export'
+let g:netrw_dirhist_3='/home/uhoh/wizehive/wiz-276-view-wont-export/20210617/box-unchecked'
+let g:netrw_dirhist_2='/home/uhoh/wizehive/wiz-276-view-wont-export/20210617'
+let g:netrw_dirhist_1='/home/uhoh/wizehive/wiz-276-view-wont-export/20210617/box-checked'
+let g:netrw_dirhist_0='/home/uhoh/wizehive/wiz-276-view-wont-export/20210617'
+let g:netrw_dirhist_9='/home/uhoh/wizehive/wiz-276-view-wont-export'
+let g:netrw_dirhist_8='/home/uhoh/.config/polybar/polybar-scripts'
+let g:netrw_dirhist_7='/home/uhoh/projects/pure-react/src'
