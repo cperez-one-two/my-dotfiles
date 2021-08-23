@@ -22,7 +22,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;;
-(setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 18)
+(setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :weight 'Regular :size 18)
         doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :weight 'Thin :size 18)
         doom-big-font (font-spec :family "Iosevka Etoile" :weight 'Regular :size 24))
 ;;(setq doom-font (font-spec :family "UbuntuMono Nerd Font Mono" :size 18))
