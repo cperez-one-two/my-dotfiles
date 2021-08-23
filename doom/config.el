@@ -22,8 +22,10 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;;
-;;(setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 15))
-(setq doom-font (font-spec :family "UbuntuMono Nerd Font Mono" :size 18))
+(setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 18)
+        doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :weight 'Thin :size 18)
+        doom-big-font (font-spec :family "Iosevka Etoile" :weight 'Regular :size 24))
+;;(setq doom-font (font-spec :family "UbuntuMono Nerd Font Mono" :size 18))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -31,9 +33,9 @@
 ;;(setq doom-theme 'doom-gruvbox)
 ;;(setq doom-theme 'doom-nord)
 ;;(setq doom-theme 'doom-solarized-dark)
-;;(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one)
 ;;(setq doom-theme 'doom-tomorrow-night)
-(setq doom-theme 'doom-twilight)
+;;(setq doom-theme 'doom-twilight)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
