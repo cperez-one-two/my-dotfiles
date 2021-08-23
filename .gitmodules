@@ -1,0 +1,6 @@
+[submodule ".macos/zsh/plugins/zsh-z"]
+	path = .macos/zsh/plugins/zsh-z
+	url = https://github.com/agkozak/zsh-z.git
+[submodule ".macos/zsh/plugins/fast-syntax-highlighting"]
+	path = .macos/zsh/plugins/fast-syntax-highlighting
+	url = https://github.com/zdharma/fast-syntax-highlighting.git

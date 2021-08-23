@@ -9,3 +9,13 @@ Simply clone the repo and run the install script.
 $ chmod +x install.sh
 $ ./install.sh
 ```
+
+## macOS Installation
+
+There is a separate folder for macOS-specific configurations. If you're on macOS, use these instead.
+
+``` sh
+$ cd .macos
+$ chmod +x install.sh
+$ ./install.sh
+```
