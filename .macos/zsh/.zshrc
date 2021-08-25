@@ -7,6 +7,8 @@ zstyle ':completion:*' menu select
 # PATH additions
 # Doom emacs utils
 PATH="$HOME/.emacs.d/bin:$PATH"
+# User scripts
+PATH="$HOME/.local/bin:$PATH"
 
 # Vi mode
 bindkey -v
@@ -41,6 +43,9 @@ alias \
 	v="vim" \
 	conf="cd $HOME/.config" \
 	home="cd $HOME"
+
+# Fast Node Manager (fnm)
+eval "$(fnm env)"
 
 # Plugins
 # zsh-z: for fast cd'ing

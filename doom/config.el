@@ -51,6 +51,28 @@
 ;; Org-roam settings
 (setq org-roam-directory "~/roam")
 
+;; Org-pretty (for purdyness)
+;; set basic title font
+;;(set-face-attribute 'org-level-8 nil :weight 'bold :inherit 'default)
+;; Low levels are unimportant => no scaling
+;;(set-face-attribute 'org-level-7 nil :inherit 'org-level-8)
+;;(set-face-attribute 'org-level-6 nil :inherit 'org-level-8)
+;;(set-face-attribute 'org-level-5 nil :inherit 'org-level-8)
+;;(set-face-attribute 'org-level-4 nil :inherit 'org-level-8)
+;; Top ones get scaled the same as in LaTeX (\large, \Large, \LARGE)
+;;(set-face-attribute 'org-level-3 nil :height 1.2) ;\large
+;;(set-face-attribute 'org-level-2 nil :height 1.41) ;\Large
+;;(set-face-attribute 'org-level-1 nil :height 1.528) ;\LARGE
+;; Only use the first 4 styles and do not cycle.
+;;(setq org-cycle-level-faces nil)
+;;(setq org-n-level-faces 4)
+;;;; Document Title, (\huge)
+;;(set-face-attribute 'org-document-title nil
+;;                    :height 2.074
+;;                    :foreground 'unspecified
+;;                    :inherit 'org-level-8)
+(setq org-superstar-headline-bullets-list '("⁖" "●" "◉" "○"))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
