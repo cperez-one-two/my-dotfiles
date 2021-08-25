@@ -56,9 +56,9 @@ eval "$(direnv hook zsh)"
 
 # Plugins
 # zsh-fast-syntax-highlighting
-#source ~/.config/zsh/plugins/
+source ~/.config/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 # zsh-z :: Fast cd'ing into folders
-#source ~/.config/zsh/plugins/
+source ~/.config/zsh/plugins/zsh-z/zsh-z.plugin.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "/home/uhoh/.local/sdkman/bin/sdkman-init.sh" ]] && source "/home/uhoh/.local/sdkman/bin/sdkman-init.sh"
