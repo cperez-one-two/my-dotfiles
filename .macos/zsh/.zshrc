@@ -40,7 +40,9 @@ preexec() { echo -ne '\e[1 q' ;} # Use beam shape cursor for each new prompt.
 alias \
 	la="lsd -Al" \
 	mkd="mkdir -p" \
-	v="vim" \
+	v="nvim" \
+	nv="nvim" \
+	vi="vim" \
 	conf="cd $HOME/.config" \
 	home="cd $HOME"
 
