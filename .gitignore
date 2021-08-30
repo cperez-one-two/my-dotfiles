@@ -1,3 +1,4 @@
 nvim/autoload/
 .macos/nvim/autoload/
 .share/
+.DS_Store
