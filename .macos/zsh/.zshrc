@@ -1,5 +1,7 @@
-PROMPT="%(?..[%F{9}%?%f]) %B%F{13}%25<..<%~%f%b %F{10}$%f "
-
+#PROMPT='%(?..[%F{9}%?%f]) %B%F{13}%25<..<%~%f%b
+#%F{10}$%f '
+PROMPT='%(?.%F{8}┏━%f.%F{8}┏━[%f%F{9}✗ %?%f%F{8}]━%f)%F{8}[%f%F{7}%n%f%F{8}]━[%f%F{13}%3~%f%F{8}]%f
+%F{8}┗━%f %F{12}λ%f '
 # Completion style
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
