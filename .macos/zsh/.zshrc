@@ -1,7 +1,18 @@
 #PROMPT='%(?..[%F{9}%?%f]) %B%F{13}%25<..<%~%f%b
 #%F{10}$%f '
-PROMPT='%(?.%F{8}┏━%f.%F{8}┏━[%f%F{9}✗ %?%f%F{8}]━%f)%F{8}[%f%F{7}%n%f%F{8}]━[%f%F{13}%3~%f%F{8}]%f
+
+# git info for prompt
+autoload -U colors && colors
+autoload -Uz vcs_info
+precmd() {
+	vcs_info
+}
+setopt prompt_subst
+
+PROMPT='%(?.%F{8}┏━%f.%F{8}┏━[%f%F{9}✗ %?%f%F{8}]━%f)%F{8}[%f%F{7}%n%f%F{8}]━[%f%F{13}%3~%f%F{8}]%f${vcs_info_msg_0_}
 %F{8}┗━%f %F{12}λ%f '
+zstyle ':vcs_info:git:*' formats '%F{8}━[%f%F{3}%b%f%F{8}]%f'
+
 # Completion style
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
@@ -26,17 +37,17 @@ function zle-keymap-select {
 		[[ ${KEYMAP} == viins ]] ||
 		[[ ${KEYMAP} = '' ]] ||
 		[[ $1 = 'beam' ]]; then
-		echo -ne '\e[5 q'
+		echo -ne '\e[3 q'
 	fi
 }
 zle -N zle-keymap-select
 zle-line-init() {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
+    echo -ne "\e[3 q"
 }
 zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+echo -ne '\e[3 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[3 q' ;} # Use beam shape cursor for each new prompt.
 
 # Aliases
 alias \
