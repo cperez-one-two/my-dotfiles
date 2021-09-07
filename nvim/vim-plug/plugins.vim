@@ -14,6 +14,7 @@ Plug 'liuchengxu/vim-which-key'															" Whichkey - Port of emacs-which-k
 Plug 'AckslD/nvim-whichkey-setup.lua'												" Lua wrapper for Whichkey
 Plug 'kyazdani42/nvim-web-devicons'													" for file icons
 Plug 'kyazdani42/nvim-tree.lua'															" Filetree
+Plug 'navarasu/onedark.nvim'																" Colorscheme
 
 " Commenting
 " Better Syntax Support

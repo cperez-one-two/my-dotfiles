@@ -50,7 +50,9 @@ EOF
 
 " Colorscheme "{{{
 " --------------------------------------------------------------------------------
-source $HOME/.config/nvim/themes/tweelight-dark.vim
+let g:onedark_transparent_background = 1
+colo onedark
+"source $HOME/.config/nvim/themes/tweelight-dark.vim
 "source $HOME/.config/nvim/plug-config/vimwiki.vim
 "source $HOME/.config/nvim/themes/nord.vim
 "source $HOME/.config/nvim/themes/onedark.vim

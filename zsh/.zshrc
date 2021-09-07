@@ -1,10 +1,18 @@
 #
 # Uhoh's Zoomer Shell
 #
-# Colors and prompt
-autoload -U colors && colors	  # Load colors
-PS1="%(?..[%B%F{9}%?%f%b]) %B%F{13}%25<..<%~%f%b %F{10}$%f "
-#PS1="%B%{$fg[yellow]%}%n %{$fg[magenta]%}%15<..<%~ %{$fg[green]%}$%b "
+# git info for prompt
+autoload -U colors && colors
+autoload -Uz vcs_info
+precmd() {
+	vcs_info
+}
+setopt prompt_subst
+
+PROMPT='%(?.%F{8}┏━━%f.%F{8}┏━━[%f%F{9}✗ %?%f%F{8}]━━%f)%F{8}[%f%F{#abb2bf} %n%f%F{8}]━━[%f%F{13} %3~%f%F{8}]%f${vcs_info_msg_0_}
+%F{8}┗%f%F{12}λ%f '
+zstyle ':vcs_info:git:*' formats '%F{8}━━[%f%F{3} %b%f%F{8}]%f'
+
 setopt autocd                   # cd into directory just by typing it
 stty stop undef                 # Disable C-s to freeze terminal
 unsetopt BEEP                   # Disable that HORRIBLE beep
@@ -36,16 +44,18 @@ bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'    # fzf
 function zle-keymap-select () {
     case $KEYMAP in
         vicmd) echo -ne '\e[2 q';;      # Solid Block
-        viins|main) echo -ne '\e[1 q';; # Blinking Block
+        #viins|main) echo -ne '\e[1 q';; # Blinking Block
+        viins|main) echo -ne '\e[3 q';; # Beam
     esac
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    echo -ne "\e[1 q"
+    echo -ne "\e[3 q"
+    #echo -ne "\e[1 q"
 }
 zle -N zle-line-init
-echo -ne '\e[1 q'                       # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[1 q' ;}        # Use beam shape cursor for each new prompt.
+echo -ne '\e[3 q'                       # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[3 q' ;}        # Use beam shape cursor for each new prompt.
 
 # fnm
 eval "`fnm env`"
