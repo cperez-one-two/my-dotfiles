@@ -95,7 +95,7 @@
 ;; they are implemented.
 (map! :ne "M-/" #'comment-or-uncomment-region)
 
-(after! org
-  (map! :map org-mode-map
-        :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup))
+;; (after! org
+;;   (map! :map org-mode-map
+;;         :n "M-j" #'org-metadown
+;;         :n "M-k" #'org-metaup))
