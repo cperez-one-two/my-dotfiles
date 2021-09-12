@@ -48,8 +48,6 @@
       org-journal-time-prefix "* "
       org-journal-date-format "%a, %Y-%m-%d")
 
-;; Org-roam settings
-(setq org-roam-directory "~/roam")
 
 ;; Org-pretty (for purdyness)
 ;; set basic title font
@@ -94,8 +92,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 (map! :ne "M-/" #'comment-or-uncomment-region)
-
-;; (after! org
-;;   (map! :map org-mode-map
-;;         :n "M-j" #'org-metadown
-;;         :n "M-k" #'org-metaup))
+(after! org
+   (map! :map org-mode-map
+         :n "M-j" #'org-metadown
+         :n "M-k" #'org-metaup))
+(after! org-roam
+        (setq org-roam-directory "~/roam"))
