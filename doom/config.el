@@ -114,6 +114,11 @@
            (file "~/roam/templates/TicketTemplate.org")
            :if-new
            (file+head "tickets/${ticketid}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          ("r" "translate request" plain
+           (file "~/roam/templates/TranslateRequestTemplate.org")
+           :if-new
+           (file+head "translate-requests/${ticketid}.org" "#+title: ${title}\n")
            :unnarrowed t))))
 ;;  (setq org-roam-dailies-directory "daily/")
 ;;  (setq org-roam-dailies-capture-templates

@@ -55,13 +55,20 @@ preexec() { echo -ne '\e[3 q' ;} # Use beam shape cursor for each new prompt.
 
 # Aliases
 alias \
-	la="lsd -Al" \
+	ls="lsd" \
+	la="lsd -A" \
+	lla="lsd -Al" \
+	lt="lsd --tree" \
+	lat="lsd -A --tree" \
 	mkd="mkdir -p" \
 	v="nvim" \
 	nv="nvim" \
-	vi="vim" \
-	conf="cd $HOME/.config" \
-	home="cd $HOME"
+	vi="vim"
+
+
+gman() {
+	man $1 | grep -- $2
+}
 
 # Fast Node Manager (fnm)
 eval "$(fnm env)"
