@@ -96,5 +96,28 @@
    (map! :map org-mode-map
          :n "M-j" #'org-metadown
          :n "M-k" #'org-metaup))
-(after! org-roam
-        (setq org-roam-directory "~/roam"))
+
+;; Org-roam
+(use-package! org-roam
+  :init
+  (setq org-roam-v2-ack t)
+  (setq org-roam-directory "~/roam")
+  :config
+  (setq org-roam-capture-templates
+        '(("d" "default" plain
+           "\n%?"
+           :if-new (file+head "${slug}.org"
+                              "#+title: ${title}\n")
+           :immediate-finish t
+           :unnarrowed t)
+          ("t" "ticket" plain
+           (file "~/roam/templates/TicketTemplate.org")
+           :if-new
+           (file+head "tickets/${ticketid}.org" "#+title: ${title}\n")
+           :unnarrowed t))))
+;;  (setq org-roam-dailies-directory "daily/")
+;;  (setq org-roam-dailies-capture-templates
+;;        '(("d" "default" entry
+;;           "\n* %H:%M %?"
+;;           :if-new (file+head "%<%Y-%m-%d>.org"
+;;                              "#+title: %<%Y-%m-%d>\n")))))

@@ -22,7 +22,9 @@ alias \
 alias \
   ka="killall" \
   shutdown="shutdown -h now" \
-  la="lsd -Al" \
+  la="lsd -A" \
+  lla="lsd -Al" \
+  lt="lsd --tree" \
   pfetch="PF_ASCII='gnu' PF_INFO='ascii title os host kernel uptime pkgs memory palette' pfetch" \
   wp="sxiv ~/pics/wallpapers" \
   mkdir="mkdir -p" \
