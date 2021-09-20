@@ -98,6 +98,32 @@
          :n "M-k" #'org-metaup))
 
 ;; Org-roam
+(map! :leader
+        (:when (featurep! :lang org +roam2)
+        (:prefix ("r" . "roam")
+        :desc "Open random node"           "a" #'org-roam-node-random
+        :desc "Find node"                  "f" #'org-roam-node-find
+        :desc "Find ref"                   "F" #'org-roam-ref-find
+        :desc "Show graph"                 "g" #'org-roam-graph
+        :desc "Insert node"                "i" #'org-roam-node-insert
+        :desc "Capture to node"            "n" #'org-roam-capture
+        :desc "Toggle roam buffer"         "r" #'org-roam-buffer-toggle
+        :desc "Launch roam buffer"         "R" #'org-roam-buffer-display-dedicated
+        :desc "Sync database"              "s" #'org-roam-db-sync
+        (:prefix ("d" . "by date")
+        :desc "Goto previous note"        "b" #'org-roam-dailies-goto-previous-note
+        :desc "Goto date"                 "d" #'org-roam-dailies-goto-date
+        :desc "Capture date"              "D" #'org-roam-dailies-capture-date
+        :desc "Goto next note"            "f" #'org-roam-dailies-goto-next-note
+        :desc "Goto tomorrow"             "m" #'org-roam-dailies-goto-tomorrow
+        :desc "Capture tomorrow"          "M" #'org-roam-dailies-capture-tomorrow
+        :desc "Capture today"             "n" #'org-roam-dailies-capture-today
+        :desc "Goto today"                "t" #'org-roam-dailies-goto-today
+        :desc "Capture today"             "T" #'org-roam-dailies-capture-today
+        :desc "Goto yesterday"            "y" #'org-roam-dailies-goto-yesterday
+        :desc "Capture yesterday"         "Y" #'org-roam-dailies-capture-yesterday
+        :desc "Find directory"            "-" #'org-roam-dailies-find-directory))))
+
 (use-package! org-roam
   :init
   (setq org-roam-v2-ack t)
@@ -105,20 +131,25 @@
   :config
   (setq org-roam-capture-templates
         '(("d" "default" plain
-           "\n%?"
-           :if-new (file+head "${slug}.org"
+           "%?"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                               "#+title: ${title}\n")
            :immediate-finish t
            :unnarrowed t)
           ("t" "ticket" plain
            (file "~/roam/templates/TicketTemplate.org")
            :if-new
-           (file+head "tickets/${ticketid}.org" "#+title: ${title}\n")
+           (file+head "tickets/${ticketid}.org" "#+title: ${title}\n#+filetags: Ticket")
+           :unnarrowed t)
+          ("p" "project" plain
+           (file "~/roam/templates/ProjectTemplate.org")
+           :if-new
+           (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Project")
            :unnarrowed t)
           ("r" "translate request" plain
            (file "~/roam/templates/TranslateRequestTemplate.org")
            :if-new
-           (file+head "translate-requests/${ticketid}.org" "#+title: ${title}\n")
+           (file+head "translate-requests/${ticketid}.org" "#+title: ${title}\n#+filetags: Translate-Request")
            :unnarrowed t))))
 ;;  (setq org-roam-dailies-directory "daily/")
 ;;  (setq org-roam-dailies-capture-templates
