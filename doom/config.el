@@ -110,19 +110,19 @@
         :desc "Toggle roam buffer"         "r" #'org-roam-buffer-toggle
         :desc "Launch roam buffer"         "R" #'org-roam-buffer-display-dedicated
         :desc "Sync database"              "s" #'org-roam-db-sync
-        (:prefix ("d" . "by date")
-        :desc "Goto previous note"        "b" #'org-roam-dailies-goto-previous-note
-        :desc "Goto date"                 "d" #'org-roam-dailies-goto-date
-        :desc "Capture date"              "D" #'org-roam-dailies-capture-date
-        :desc "Goto next note"            "f" #'org-roam-dailies-goto-next-note
-        :desc "Goto tomorrow"             "m" #'org-roam-dailies-goto-tomorrow
-        :desc "Capture tomorrow"          "M" #'org-roam-dailies-capture-tomorrow
-        :desc "Capture today"             "n" #'org-roam-dailies-capture-today
-        :desc "Goto today"                "t" #'org-roam-dailies-goto-today
-        :desc "Capture today"             "T" #'org-roam-dailies-capture-today
-        :desc "Goto yesterday"            "y" #'org-roam-dailies-goto-yesterday
-        :desc "Capture yesterday"         "Y" #'org-roam-dailies-capture-yesterday
-        :desc "Find directory"            "-" #'org-roam-dailies-find-directory))))
+                (:prefix ("d" . "by date")
+                :desc "Goto previous note"        "b" #'org-roam-dailies-goto-previous-note
+                :desc "Goto date"                 "d" #'org-roam-dailies-goto-date
+                :desc "Capture date"              "D" #'org-roam-dailies-capture-date
+                :desc "Goto next note"            "f" #'org-roam-dailies-goto-next-note
+                :desc "Goto tomorrow"             "m" #'org-roam-dailies-goto-tomorrow
+                :desc "Capture tomorrow"          "M" #'org-roam-dailies-capture-tomorrow
+                :desc "Capture today"             "n" #'org-roam-dailies-capture-today
+                :desc "Goto today"                "t" #'org-roam-dailies-goto-today
+                :desc "Capture today"             "T" #'org-roam-dailies-capture-today
+                :desc "Goto yesterday"            "y" #'org-roam-dailies-goto-yesterday
+                :desc "Capture yesterday"         "Y" #'org-roam-dailies-capture-yesterday
+                :desc "Find directory"            "-" #'org-roam-dailies-find-directory))))
 
 (use-package! org-roam
   :init
@@ -139,17 +139,22 @@
           ("t" "ticket" plain
            (file "~/roam/templates/TicketTemplate.org")
            :if-new
-           (file+head "tickets/${ticketid}.org" "#+title: ${title}\n#+filetags: Ticket")
+           (file+head "tickets/${ticketid}.org" "#+title: ${title}\n#+category: ${ticketid}\n#+filetags: Ticket")
            :unnarrowed t)
           ("p" "project" plain
            (file "~/roam/templates/ProjectTemplate.org")
            :if-new
-           (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Project")
+           (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Project")
            :unnarrowed t)
           ("r" "translate request" plain
            (file "~/roam/templates/TranslateRequestTemplate.org")
            :if-new
            (file+head "translate-requests/${ticketid}.org" "#+title: ${title}\n#+filetags: Translate-Request")
+           :unnarrowed t)
+          ("h" "href" plain
+           (file "~/roam/templates/HrefTemplate.org")
+           :if-new
+           (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: href")
            :unnarrowed t))))
 ;;  (setq org-roam-dailies-directory "daily/")
 ;;  (setq org-roam-dailies-capture-templates
@@ -157,3 +162,22 @@
 ;;           "\n* %H:%M %?"
 ;;           :if-new (file+head "%<%Y-%m-%d>.org"
 ;;                              "#+title: %<%Y-%m-%d>\n")))))
+;;
+
+(defun my/org-roam-filter-by-tag (tag-name)
+  (lambda (node)
+    (member tag-name (org-roam-node-tags node))))
+
+(defun my/org-roam-list-notes-by-tag (tag-name)
+  (mapcar #'org-roam-node-file
+          (seq-filter
+           (my/org-roam-filter-by-tag tag-name)
+           (org-roam-node-list))))
+
+(defun my/org-roam-refresh-agenda-list ()
+  (interactive)
+  (setq org-agenda-files (append (my/org-roam-list-notes-by-tag "Project") (my/org-roam-list-notes-by-tag "Ticket"))))
+
+;; Build the agenda list the first time for the session
+;; Auto grabs todos from project files for org-agenda
+(my/org-roam-refresh-agenda-list)
