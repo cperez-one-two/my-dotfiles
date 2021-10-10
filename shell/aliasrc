@@ -1,5 +1,5 @@
 # Use $XINITRC variable if file exists.
-[ -f "$XINITRC" ] && alias startx="ssh-agent startx $XINITRC"
+[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
 
 # run sudo without typing it for these programs
 for x in pacman mount umount tlp-stat systemctl journalctl; do
