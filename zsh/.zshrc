@@ -9,9 +9,9 @@ precmd() {
 }
 setopt prompt_subst
 
-PROMPT='%(?.%F{8}┏━━%f.%F{8}┏━━[%f%F{9}✗ %?%f%F{8}]━━%f)%F{8}[%f%F{#abb2bf} %n%f%F{8}]━━[%f%F{13} %3~%f%F{8}]%f${vcs_info_msg_0_}
-%F{8}┗%f%F{12}→%f '
-zstyle ':vcs_info:git:*' formats '%F{8}━━[%f%F{3} %b%f%F{8}]%f'
+PROMPT='%B%(?..%F{9} ✗ %? %f)%F{13}  %3~ %f${vcs_info_msg_0_}
+%F{12} >%f%b '
+zstyle ':vcs_info:git:*' formats '%F{3}  %b%f'
 
 setopt autocd                   # cd into directory just by typing it
 stty stop undef                 # Disable C-s to freeze terminal
