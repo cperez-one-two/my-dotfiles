@@ -50,12 +50,13 @@ EOF
 
 " Colorscheme "{{{
 " --------------------------------------------------------------------------------
-colo onedark
+"colo onedark
+"colo dichromatic
 "source $HOME/.config/nvim/themes/tweelight-dark.vim
 "source $HOME/.config/nvim/plug-config/vimwiki.vim
 "source $HOME/.config/nvim/themes/nord.vim
 "source $HOME/.config/nvim/themes/onedark.vim
-"source $HOME/.config/nvim/themes/solarized.vim
+source $HOME/.config/nvim/themes/solarized.vim
 "source $HOME/.config/nvim/themes/airline.vim
 "source $HOME/.config/nvim/themes/lightline.vim
 

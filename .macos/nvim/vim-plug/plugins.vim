@@ -14,7 +14,8 @@ Plug 'liuchengxu/vim-which-key'															" Whichkey - Port of emacs-which-k
 Plug 'AckslD/nvim-whichkey-setup.lua'												" Lua wrapper for Whichkey
 Plug 'kyazdani42/nvim-web-devicons'													" for file icons
 Plug 'kyazdani42/nvim-tree.lua'															" Filetree
-Plug 'navarasu/onedark.nvim'																" Colorscheme
+"Plug 'navarasu/onedark.nvim'																" Colorscheme
+Plug 'overcache/NeoSolarized'
 
 " Commenting
 " Better Syntax Support
@@ -40,7 +41,6 @@ Plug 'navarasu/onedark.nvim'																" Colorscheme
 "Plug 'vim-airline/vim-airline-themes'
 " Themes
 "Plug 'joshdick/onedark.vim'
-"Plug 'overcache/NeoSolarized'
 "Plug 'arcticicestudio/nord-vim'
 "Plug 'morhetz/gruvbox'
 "Plug 'vim-scripts/twilight256.vim'
