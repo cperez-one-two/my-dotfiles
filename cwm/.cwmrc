@@ -2,13 +2,18 @@
 
 ## appearance
 borderwidth		1
-gap			44 8 8 8
+gap			8 8 8 8
 color activeborder	#abb2bf
 color inactiveborder	#1e2127
-snapdist		4
+color font	#abb2bf
+color menubg	#1e2127
+color menufg	#abb2bf
+color selfont	#1e2127
+snapdist		40
 
 ## settings
 ignore polybar
+ignore trayer
 #ignore MEGAsync
 moveamount 16
 sticky yes
@@ -17,44 +22,57 @@ unbind-key all
 ## bindings
 bind-key M4-r		restart
 bind-key M4-q		quit
-
-## exec
+bind-key 4S-space		menu-window
+bind-key 4C-space		menu-window-hidden
 
 ## windows
-bind-key CM-h		window-snap-left
-bind-key CM-l		window-snap-right
-bind-key CM-k		window-snap-up
-bind-key CM-j		window-snap-down
-bind-key 4-w		window-close
-bind-key CM-m		window-maximize
-bind-key 4-l		window-cycle
-bind-key 4-h		window-rcycle
-bind-key 4-j		window-cycle-ingroup
-bind-key 4-k		window-rcycle-ingroup
-bind-key M4-h		window-move-left-big
-bind-key M4-j		window-move-down-big
-bind-key M4-k		window-move-up-big
-bind-key M4-l		window-move-right-big
+bind-key CM-h			window-snap-left
+bind-key CM-l			window-snap-right
+bind-key CM-k			window-snap-up
+bind-key CM-j			window-snap-down
+bind-key 4-w			window-close
+bind-key CM-m			window-maximize
+bind-key 4-Tab		window-cycle
+bind-key 4S-Tab		window-rcycle
+bind-key 4-j			window-cycle-ingroup
+bind-key 4-k			window-rcycle-ingroup
+bind-key 4S-h			window-move-left-big
+bind-key 4S-j			window-move-down-big
+bind-key 4S-k			window-move-up-big
+bind-key 4S-l			window-move-right-big
+bind-key M4-h			window-resize-left
+bind-key M4-j			window-resize-down
+bind-key M4-k			window-resize-up
+bind-key M4-l			window-resize-right
+bind-key CM-equal			window-vmaximize
 
 ## groups
-bind-key 4-Tab	group-cycle
-bind-key 4-1		group-toggle-1
-bind-key 4-2		group-toggle-2
-bind-key 4-3		group-toggle-3
-bind-key 4-7		group-toggle-7
-bind-key 4-8		group-toggle-8
-bind-key 4-9		group-toggle-9
-bind-key 4-a		group-toggle-all
-bind-key 4S-1		window-movetogroup-1
-bind-key 4S-2		window-movetogroup-2
-bind-key 4S-3		window-movetogroup-3
-bind-key 4S-7		window-movetogroup-7
-bind-key 4S-8		window-movetogroup-8
-bind-key 4S-9		window-movetogroup-9
-bind-key 4C-1		group-only-1
-bind-key 4C-2		group-only-2
-bind-key 4C-3		group-only-3
-bind-key 4C-7		group-only-7
-bind-key 4C-8		group-only-8
-bind-key 4C-9		group-only-9
-autogroup 0			'megasync, MEGAsync'
+bind-key 4-l			group-cycle
+bind-key 4-h			group-rcycle
+bind-key 4-1			group-only-1
+bind-key 4-2			group-only-2
+bind-key 4-3			group-only-3
+bind-key 4-7			group-only-7
+bind-key 4-8			group-only-8
+bind-key 4-9			group-only-9
+bind-key 4C-1			group-toggle-1
+bind-key 4C-2			group-toggle-2
+bind-key 4C-3			group-toggle-3
+bind-key 4C-7			group-toggle-7
+bind-key 4C-8			group-toggle-8
+bind-key 4C-9			group-toggle-9
+bind-key 4-a			group-toggle-all
+bind-key 4S-1			window-movetogroup-1
+bind-key 4S-2			window-movetogroup-2
+bind-key 4S-3			window-movetogroup-3
+bind-key 4S-7			window-movetogroup-7
+bind-key 4S-8			window-movetogroup-8
+bind-key 4S-9			window-movetogroup-9
+bind-key 4-g			window-group
+autogroup 0				'megasync, MEGAsync'
+
+## mouse
+unbind-mouse all
+bind-mouse 4-3 window-resize
+bind-mouse 4-1 window-move
+bind-mouse 4-2 window-lower
