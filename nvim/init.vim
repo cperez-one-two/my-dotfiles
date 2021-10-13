@@ -9,8 +9,8 @@
 
 " General settings "{{{
 " --------------------------------------------------------------------------------
-	source $HOME/.config/nvim/general-config/config.vim
-	source $HOME/.config/nvim/general-config/mappings.vim
+source $HOME/.config/nvim/general-config/config.vim
+source $HOME/.config/nvim/general-config/mappings.vim
 
 "}}}
 
@@ -41,22 +41,22 @@ require("treesitter")
 require("completion")
 require("which-key")
 require("plug-colorizer")
+require("pears").setup()
+require("indent-blankline")
+require("lualine-settings")
 EOF
-
-"luafile $HOME/.config/nvim/lua/plug-colorizer.lua
-"lua require'colorizer'.setup()
 
 "}}}
 
 " Colorscheme "{{{
 " --------------------------------------------------------------------------------
-let g:onedark_transparent_background = 1
-colo onedark
+"colo onedark
+"colo dichromatic
 "source $HOME/.config/nvim/themes/tweelight-dark.vim
 "source $HOME/.config/nvim/plug-config/vimwiki.vim
 "source $HOME/.config/nvim/themes/nord.vim
 "source $HOME/.config/nvim/themes/onedark.vim
-"source $HOME/.config/nvim/themes/solarized.vim
+source $HOME/.config/nvim/themes/solarized.vim
 "source $HOME/.config/nvim/themes/airline.vim
 "source $HOME/.config/nvim/themes/lightline.vim
 
