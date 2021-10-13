@@ -175,7 +175,8 @@
     max_icon_size = 32
 
     # Paths to default icons.
-    #icon_path = /usr/share/icons/Newaita-dark/status/22/:/usr/share/icons/Newaita-dark/devices/22/
+    icon_path = /usr/share/icons/Blueberry-Numix-2021/22/status:/usr/share/icons/Blueberry-Numix-2021/22/devices:/usr/share/icons/Blueberry-Numix-2021/22/apps:
+    :
 
     ### History ###
 
@@ -289,7 +290,7 @@
     # Context menu.
     context = ctrl+shift+period
 
-[urgency_low]
+    [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
     # Nord
