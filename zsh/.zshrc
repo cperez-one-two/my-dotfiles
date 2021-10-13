@@ -9,7 +9,7 @@ precmd() {
 }
 setopt prompt_subst
 
-# Simple
+# simple
 PROMPT='%(?..%F{1}✗ %? %f)%b%B%F{14}%n%f%b at %B%F{2}%m%f%b in %B%F{5}%3~%f%b ${vcs_info_msg_0_}%b
 %F{4}%#%f '
 zstyle ':vcs_info:git:*' formats 'on %B%F{3}%b%f'
@@ -18,6 +18,10 @@ zstyle ':vcs_info:git:*' formats 'on %B%F{3}%b%f'
 #PROMPT='%(?.%F{8}┏━━%f.%F{8}┏━━[%f%F{9}✗ %?%f%F{8}]━━%f)%F{8}[%f%F{#abb2bf} %n%f%F{8}]━━[%f%F{13} %3~%f%F{8}]%f${vcs_info_msg_0_}
 #%F{8}┗%f%F{12}→%f '
 #zstyle ':vcs_info:git:*' formats '%F{8}━━[%f%F{3} %b%f%F{8}]%f'
+# icons
+#PROMPT='%B%(?..%F{9} ✗ %? %f)%F{13}  %3~ %f${vcs_info_msg_0_}
+#%F{12} >%f%b '
+#zstyle ':vcs_info:git:*' formats '%F{3}  %b%f'
 
 setopt autocd                   # cd into directory just by typing it
 stty stop undef                 # Disable C-s to freeze terminal

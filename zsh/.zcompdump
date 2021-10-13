@@ -255,7 +255,6 @@ _comps=(
 'dmidecode' '_dmidecode'
 'doas' '_doas'
 'docker' '_docker'
-'docker-compose' '_docker-compose'
 'dockerd' '_docker'
 'domainname' '_yp'
 'dos2unix' '_dos2unix'
@@ -317,6 +316,7 @@ _comps=(
 'fc' '_fc'
 'fc-list' '_xft_fonts'
 'fc-match' '_xft_fonts'
+'fd' '_fd'
 'feh' '_feh'
 'fetchmail' '_fetchmail'
 'ffmpeg' '_ffmpeg'
@@ -1631,7 +1631,7 @@ bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
 autoload -Uz _zshz _alacritty _bluetoothctl _bootctl _bspc \
-            _busctl _coredumpctl _curl _docker _docker-compose \
+            _busctl _coredumpctl _curl _docker _fd \
             _hostnamectl _journalctl _kernel-install _kitty _lf \
             _libinput _localectl _loginctl _lsd _machinectl \
             _mkinitcpio _mpv _networkctl _nnn _pacman \
