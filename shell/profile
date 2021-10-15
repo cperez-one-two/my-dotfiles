@@ -3,7 +3,11 @@
 
 # Default programs
 export EDITOR="nvim"
-export TERMINAL="alacritty"
+if [ $(hostname) = "meep" ]; then
+    export TERMINAL="termite"
+else
+    export TERMINAL="alacritty"
+fi
 export BROWSER="brave"
 
 # $PATH variables
