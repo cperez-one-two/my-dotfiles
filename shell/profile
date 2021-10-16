@@ -3,7 +3,7 @@
 
 # Default programs
 export EDITOR="nvim"
-if [ $(hostname) = "meep" ]; then
+if [ $(whoami) = "meep" ]; then
     export TERMINAL="termite"
 else
     export TERMINAL="alacritty"
