@@ -11,11 +11,11 @@ mod4 + @space
 	dmenu_run
 
 # make sxhkd reload its configuration files:
-mod4 + Escape
+mod4 + alt + Escape
 	pkill -USR1 -x sxhkd
 
 # Volume controls
-mod4 + shift {equal, minus, p}
+mod4 + alt {equal, minus, p}
 	pactl set-sink-{volume 0 +10%,volume 0 -10%,mute 0 toggle}
 {XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
 	pactl set-sink-{volume 0 +10%,volume 0 -10%,mute 0 toggle}
@@ -28,9 +28,9 @@ XF86MonBrightnessDown
     brightness down
 
 # programs
-mod4 + shift + i
+mod4 + alt + i
 	$BROWSER
-mod4 + shift + t
+mod4 + alt + t
 	telegram-desktop
 
 #
@@ -55,6 +55,9 @@ mod4 + y
 # swap the current node and the biggest window
 mod4 + g
 	bspc node -s biggest.local --follow
+
+mod4 + shift + g
+    bspc node @parent -R 90
 
 #
 # state/flags
