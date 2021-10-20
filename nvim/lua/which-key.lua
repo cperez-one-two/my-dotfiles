@@ -11,19 +11,18 @@ require("whichkey_setup").config{
 local wk = require('whichkey_setup')
 
 local keymap = {
-		--w = {':w!<CR>', 'save file'}, -- set a single command and text
-		--j = 'split args', -- only set a text for an already configured keymap
-		-- ['<CR>'] = {'@q', 'macro q'}, -- setting a special key
+    --w = {':w!<CR>', 'save file'}, -- set a single command and text
+    --j = 'split args', -- only set a text for an already configured keymap
+    -- ['<CR>'] = {'@q', 'macro q'}, -- setting a special key
 	n = {':NvimTreeToggle<CR>', 'filetree'},
+    [','] = {'<Cmd>Telescope buffers<CR>', 'buffers'},
 	z = {
 		name = '+folding',
 		m = {'zM', 'fold-all'},
 		r = {'zR', 'unfold-all'},
 	},
-
 	f = { -- set a nested structure
 		name = '+find',
-		b = {'<Cmd>Telescope buffers<CR>', 'buffers'},
 		c = {
 				name = '+commands',
 				c = {'<Cmd>Telescope commands<CR>', 'commands'},
