@@ -17,91 +17,26 @@
 ;==========================================================
 
 [colors]
-; Gruvbox
-;background = #282828
-;background-alt = #928374
-;foreground = #fbf1c7
-;foreground-alt = #bdbdbd
-;primary = #fabd2f
-;secondary = #d79921
-;alert = #fb4934
-
-; Adwaita-dark
-;foreground = #e8eeec
-;foreground-alt = #bdbdbd
-;background = #363c3c
-;background-alt = #91918e
-;primary = #fabd2f
-;secondary = #d79921
-;alert = #fb4934
-
-; Tomorrow-dark
-;foreground = #c5c8c6
-;foreground-alt = #c5c8c6
-;background = #1d1f21
-;background-alt = #969896
-;primary = #81a2be
-;secondary = #b5bd68
-;alert = #cc6666
-
-; Isotope-dark
-;foreground = #d0d0d0
-;foreground-alt = #d0d0d0
-;background = #000000
-;background-alt = #808080
-;primary = #0066ff
-;secondary = #33ff00
-;alert = #ff0000
-
-; Twilight
-;foreground = #c5c8c6
-;foreground-alt = #c5c8c6
-;background = #000000
-;background-alt = #808080
-;primary = #7587a6
-;secondary = #8f9d6a
-;alert = #cf6a4c
-
-; Onedark
-foreground = #abb2bf
-foreground-alt = #abb2bf
-;background = #001e2127
-;background = #1e2127
-background = #1e2127
-background-alt = #5c6370
-primary = #61afef
-secondary = #98c379
-alert = #e06c75
-black = #1e2127
-red = #e06c75
-green = #98c379
-yellow = #d19a66
-blue = #61afef
-magenta = #c678dd
-cyan = #56b6c2
-white = #828791
-
-; Solarized Light
-;foreground = #586E75
-;foreground-alt = #586E75
-;background = #FDF6E3
-;background-alt = #93A1A1
-;primary = #268BD2
-;secondary = #859900
-;alert = #DC322F
-
-; Nord
-;foreground = #d8dee9
-;foreground-alt = #d8dee9
-;background = #2e3440
-;background-alt = #a5abb6
-;primary = #81a1c1
-;secondary = #a3be8c
-;alert = #bf616a
+; from xresources
+foreground = ${xrdb:foreground}
+foreground-alt = ${xrdb:color8}
+background = ${xrdb:background}
+background-alt = ${xrdb:background}
+primary = ${xrdb:color4}
+secondary = ${xrdb:color2}
+alert = ${xrdb:color1}
+black = ${xrdb:color0}
+red = ${xrdb:color1}
+green = ${xrdb:color2}
+yellow = ${xrdb:color3}
+blue = ${xrdb:color4}
+magenta = ${xrdb:color5}
+cyan = ${xrdb:color6}
+white = ${xrdb:color15}
 
 [bar/example]
 monitor = ${env:MONITOR:eDP-1}
-tray-position = ${env:TRAY_POSITION:left}
+tray-position = ${env:TRAY_POSITION:right}
 ;monitor = eDP-1
 ;tray-position = right
 ;tray-padding = 2
@@ -132,8 +67,8 @@ font-0 = UbuntuMono Nerd Font:style=Regular:pixelsize=14;
 font-1 = Noto Color Emoji:style=Regular:scale=10;
 font-2 = Noto Sans Symbols2:style=Regular:pixelsize=11;
 
-modules-left = title
-modules-center = bspwm
+modules-left = bspwm title
+;modules-center =
 modules-right = ticker-crypto pulseaudio filesystem cpu memory battery battery-1 temperature date powermenu
 
 wm-restack = bspwm
@@ -166,62 +101,46 @@ format-unmounted = <label-unmounted>
 type = internal/bspwm
 enable-scroll = false
 
-;ws-icon-0 = X;ⅹ
+;ws-icon-0 = X;x
 ;ws-icon-1 = I;ⅰ
-;ws-icon-2 = II;ⅱ
-;ws-icon-3 = III;ⅲ
-;ws-icon-4 = IV;ⅳ
-;ws-icon-5 = V;ⅴ
-;ws-icon-6 = VI;ⅵ
-;ws-icon-7 = VII;ⅶ
-;ws-icon-8 = VIII;ⅷ
-;ws-icon-9 = IX;ⅸ
-;ws-icon-0 = 10;ⅹ
-;ws-icon-1 = 1;ⅰ
-;ws-icon-2 = 2;ⅱ
-;ws-icon-3 = 3;ⅲ
-;ws-icon-4 = 4;ⅳ
-;ws-icon-5 = 5;ⅴ
-;ws-icon-6 = 6;ⅵ
-;ws-icon-7 = 7;ⅶ
-;ws-icon-8 = 8;ⅷ
-;ws-icon-9 = 9;ⅸ
+;ws-icon-2 = II;ii
+;ws-icon-3 = III;iii
+;ws-icon-4 = IV;iv
+;ws-icon-5 = V;v
+;ws-icon-6 = VI;vi
+;ws-icon-7 = VII;vii
+;ws-icon-8 = VIII;viii
+;ws-icon-9 = IX;ix
 
 label-occupied = 綠
-;label-occupied = %icon%
-label-occupied-foreground = ${colors.background-alt}
+label-occupied-foreground = ${colors.foreground-alt}
 label-occupied-padding = 1
 
 label-empty = 祿
-;label-empty = %icon%
-label-empty-foreground = ${colors.background-alt}
+label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
 
 ; focused = Active workspace on focused monitor
 label-focused = 綠
-;label-focused = %icon%
+label-focused-foreground = ${colors.white}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = 祿
-;label-unfocused = %icon%
 label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${colors.background-alt}
-label-visible-foreground = ${colors.foreground}
+label-visible = 綠
+label-visible-background = ${colors.background}
+label-visible-foreground = ${colors.foreground-alt}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = 綠
 ;label-urgent = %icon%
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 1
 
-; label-separator = |
-
-;format = <label-state>
 
 [module/title]
 type = internal/xwindow
@@ -237,8 +156,8 @@ label-maxlen = 50
 ; Used instead of label when there is no window title
 ; Available tokens:
 ;   None
-label-empty = Empty
-label-empty-foreground = {colors.foreground-alt}
+label-empty = empty
+label-empty-foreground = ${colors.foreground-alt}
 
 [module/mpd]
 type = internal/mpd
@@ -264,15 +183,15 @@ interval = 0.5
 ; Spacing between individual per-core ramps
 ;ramp-coreload-spacing = 1
 ramp-load-0 = ""
-ramp-load-0-foreground = ${colors.white}
+ramp-load-0-foreground = ${colors.foreground}
 ramp-load-1 = ""
-ramp-load-1-foreground = ${colors.white}
+ramp-load-1-foreground = ${colors.foreground}
 ramp-load-2 = ""
-ramp-load-2-foreground = ${colors.white}
+ramp-load-2-foreground = ${colors.foreground}
 ramp-load-3 = ""
-ramp-load-3-foreground = ${colors.white}
+ramp-load-3-foreground = ${colors.foreground}
 ramp-load-4 = ""
-ramp-load-4-foreground = ${colors.white}
+ramp-load-4-foreground = ${colors.foreground}
 ramp-load-5 = ""
 ramp-load-5-foreground = ${colors.yellow}
 ramp-load-6 = ""
@@ -352,7 +271,7 @@ label = %time%
 type = internal/pulseaudio
 
 label-muted = "婢 muted"
-label-muted-foreground = ${colors.background-alt}
+label-muted-foreground = ${colors.foreground-alt}
 
 ramp-volume-0 = 奔
 ramp-volume-1 = 墳
