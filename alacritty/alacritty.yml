@@ -355,7 +355,7 @@ font:
   #indexed_colors:
   #  - { index: 16, color: '0x000000' }
 
-# Colors (Solarized Dark)
+     ## Colors (Solarized Dark)
 colors:
   # Default colors
   primary:

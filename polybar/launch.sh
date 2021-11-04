@@ -16,7 +16,7 @@ done
 
 for m in $outputs ; do
 	if [[ $m == $tray_output ]]; then
-		TRAY_POSITION=left MONITOR=$m polybar --reload example 2>~/.cache/polybar/$m.log &
+		TRAY_POSITION=right MONITOR=$m polybar --reload example 2>~/.cache/polybar/$m.log &
 	else
 		TRAY_POSITION=none MONITOR=$m polybar --reload example 2>~/.cache/polybar/$m.log &
 	fi
