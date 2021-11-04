@@ -1,0 +1,33 @@
+# apps
+alt - return : open -na /Applications/Alacritty.app
+cmd + alt - i : open -na /Applications/Google\ Chrome.app
+cmd + alt - s : open -a /Applications/Slack.app
+cmd + alt - a : open -a /Applications/Sequel\ Ace.app
+cmd + alt - e : open -a /Applications/Emacs.app
+
+# yabai
+
+# move focus
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+# swap leaf
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
+
+# toggle previous desktop
+alt - tab  : yabai -m display --focus recent
+
+# window resizing
+ctrl + alt - h : yabai -m window --resize left:-100:0
+ctrl + alt - j : yabai -m window --resize bottom:0:100
+ctrl + alt - k : yabai -m window --resize top:0:-100
+ctrl + alt - l : yabai -m window --resize right:100:0
+
+# Make window native fullscreen
+alt - m         : yabai -m window --toggle zoom-fullscreen
+shift + alt - m : yabai -m window --toggle native-fullscreen
