@@ -74,7 +74,12 @@ alias \
 	mkd="mkdir -p" \
 	v="nvim" \
 	nv="nvim" \
-	vi="vim"
+	vi="vim" \
+  nf="neofetch" \
+  bss="brew services start" \
+  bsr="brew services restart" \
+  bsst="brew services stop" \
+  bsl="brew services list"
 
 
 gman() {
