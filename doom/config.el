@@ -155,14 +155,16 @@
            (file "~/roam/templates/HrefTemplate.org")
            :if-new
            (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: href")
-           :unnarrowed t))))
-;;  (setq org-roam-dailies-directory "daily/")
-;;  (setq org-roam-dailies-capture-templates
-;;        '(("d" "default" entry
-;;           "\n* %H:%M %?"
-;;           :if-new (file+head "%<%Y-%m-%d>.org"
-;;                              "#+title: %<%Y-%m-%d>\n")))))
-;;
+           :unnarrowed t)))
+  (setq org-roam-dailies-directory "daily/")
+  (setq org-roam-dailies-capture-templates
+        '(("j" "journal" entry "%?"
+                :if-new (file+head "%<%Y-%m-%d>.org"
+                        "#+title: %<%Y-%m-%d>\n\n* Tasks\n** today\n** optionals\n** sprint goals\n* What happened today")))))
+          ;; ("t" "todos" entry "* TODO %?"
+          ;;       :if-new (file+head+olp "%<%Y-%m-%d>.org"
+          ;;               "#+title: %<%Y-%m-%d>\n"
+          ;;               ("Tasks"))))))
 
 (defun my/org-roam-filter-by-tag (tag-name)
   (lambda (node)
