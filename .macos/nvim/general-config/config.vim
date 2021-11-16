@@ -33,9 +33,9 @@ set listchars=tab:\┊\ ,trail:·,nbsp:%
 
 " Tab settings
 set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set smarttab
 
 "Automatically delete trailing whitespace and newlines upon save
