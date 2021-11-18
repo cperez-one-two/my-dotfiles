@@ -1,6 +1,8 @@
 .macos/zsh/.zcompdump
-.macos/nvim/autoload/
-nvim/autoload/
+.macos/nvim/autoload/plugged/nvim-colorizer.lua
+.macos/nvim/autoload/plugged/nvim-compe
+.macos/nvim/autoload/plugged/nvim-lspconfig
+nvim/autoload
 zsh/.zcompdump
 .share/
 .DS_Store
