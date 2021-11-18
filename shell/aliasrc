@@ -32,7 +32,8 @@ alias \
   scrs="scrot '%Y-%m-%d-%M_%X.png' -e 'mv \$f \$\$SCROTS' -s" \
   za="zathura" \
   v="$EDITOR" \
-  iv="sxiv"
+  iv="sxiv" \
+  nf="neofetch"
   #pbcopy='xclip -selection clipboard' \
   #pbpaste='xclip -selection clipboard -o'
 
@@ -42,6 +43,4 @@ alias \
   dl="$HOME/Downloads" \
   proj="$HOME/projects" \
   pics="$HOME/pics" \
-  conf="$HOME/.config" \
-  wallpapers="$HOME/pics/wallpapers" \
-  wiz="$HOME/wizehive"
+  conf="$HOME/.config"
