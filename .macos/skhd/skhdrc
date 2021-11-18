@@ -1,53 +1,54 @@
 # apps
+# TODO :: once yabai is fixed, uncomment other bindings
 alt - return : open -na /Applications/Alacritty.app
-cmd + alt - i : open -na /Applications/Google\ Chrome.app
-cmd + alt - s : open -a /Applications/Slack.app
-cmd + alt - a : open -a /Applications/Sequel\ Ace.app
-cmd + alt - e : open -a /Applications/Emacs.app
-
-# yabai
-
-# windows
-## move focus
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
-
-# swap leaf
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
-
-## resizing
-ctrl + alt - h : yabai -m window --resize left:-100:0
-ctrl + alt - j : yabai -m window --resize bottom:0:100
-ctrl + alt - k : yabai -m window --resize top:0:-100
-ctrl + alt - l : yabai -m window --resize right:100:0
-
-
-# display
-## toggle previous display
-alt - tab  : yabai -m display --focus recent
-
-# space
-## create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-shift + alt - c : yabai -m space --create && \
-                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                   yabai -m window --space "${index}" && \
-                   yabai -m space --focus "${index}"
-
-## focus desktop
-alt - n : yabai -m space --focus next
-alt - p : yabai -m space --focus prev
-
-# Make window native fullscreen
-alt - m         : yabai -m window --toggle zoom-fullscreen
-shift + alt - m : yabai -m window --toggle native-fullscreen
-
-# toggle node split direction
-shift + alt - g : yabai -m window --toggle split
-
-# toggle float
-alt - s : yabai -m window --toggle float
+#cmd + alt - i : open -na /Applications/Google\ Chrome.app
+#cmd + alt - s : open -a /Applications/Slack.app
+#cmd + alt - a : open -a /Applications/Sequel\ Ace.app
+#cmd + alt - e : open -a /Applications/Emacs.app
+#
+## yabai
+#
+## windows
+### move focus
+#alt - h : yabai -m window --focus west
+#alt - j : yabai -m window --focus south
+#alt - k : yabai -m window --focus north
+#alt - l : yabai -m window --focus east
+#
+## swap leaf
+#shift + alt - h : yabai -m window --swap west
+#shift + alt - j : yabai -m window --swap south
+#shift + alt - k : yabai -m window --swap north
+#shift + alt - l : yabai -m window --swap east
+#
+### resizing
+#ctrl + alt - h : yabai -m window --resize left:-100:0
+#ctrl + alt - j : yabai -m window --resize bottom:0:100
+#ctrl + alt - k : yabai -m window --resize top:0:-100
+#ctrl + alt - l : yabai -m window --resize right:100:0
+#
+#
+## display
+### toggle previous display
+#alt - tab  : yabai -m display --focus recent
+#
+## space
+### create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+#shift + alt - c : yabai -m space --create && \
+#                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+#                   yabai -m window --space "${index}" && \
+#                   yabai -m space --focus "${index}"
+#
+### focus desktop
+#alt - n : yabai -m space --focus next
+#alt - p : yabai -m space --focus prev
+#
+## Make window native fullscreen
+#alt - m         : yabai -m window --toggle zoom-fullscreen
+#shift + alt - m : yabai -m window --toggle native-fullscreen
+#
+## toggle node split direction
+#shift + alt - g : yabai -m window --toggle split
+#
+## toggle float
+#alt - s : yabai -m window --toggle float
