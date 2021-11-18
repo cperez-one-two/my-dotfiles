@@ -1,6 +1,6 @@
 .macos/zsh/.zcompdump
-.macos/nvim/autoload/
-nvim/autoload/
+.macos/nvim/autoload
+nvim/autoload
 zsh/.zcompdump
 .share/
 .DS_Store
