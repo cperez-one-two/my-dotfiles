@@ -15,7 +15,7 @@ setopt prompt_subst
 #zstyle ':vcs_info:git:*' formats '%F{8}━━[%f%F{3} %b%f%F{8}]%f'
 
 # simple mac
-PROMPT='%(?..%F{red}✗ %? %f)%b%B%F{14}%n%f%b at %B%F{green}%m%f%b in %B%F{magenta}%3~%f%b ${vcs_info_msg_0_}%b
+PROMPT='%(?..%F{red}✗ %? %f)%b%B%F{14}%n%f%b in %B%F{magenta}%3~%f%b ${vcs_info_msg_0_}%b
 %F{blue}%#%f '
 zstyle ':vcs_info:git:*' formats 'on %B%F{yellow}%b%f'
 
