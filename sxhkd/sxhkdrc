@@ -15,23 +15,24 @@ mod4 + alt + Escape
 	pkill -USR1 -x sxhkd
 
 # Volume controls
-mod4 + alt {equal, minus, p}
-	pactl set-sink-{volume 0 +10%,volume 0 -10%,mute 0 toggle}
 {XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
 	pactl set-sink-{volume 0 +10%,volume 0 -10%,mute 0 toggle}
 
 # Brightness controls (~/.local/bin/brightness)
-XF86MonBrightnessUp
-    brightness up
-
-XF86MonBrightnessDown
-    brightness down
+XF86MonBrightness{Up,Down}
+    brightness {up,down}
 
 # programs
-mod4 + alt + i
+ctrl + alt + shift + b
 	$BROWSER
-mod4 + alt + t
+ctrl + alt + shift + t
 	telegram-desktop
+ctrl + alt + shift + e
+    emacs
+ctrl + alt + shift + k
+    keepassxc
+ctrl + alt + shift + f
+    firefox
 
 #
 # bspwm
@@ -106,7 +107,7 @@ mod4 + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-mod4 + {_,shift + }{1-9,0}
+mod4 + {_,ctrl + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
@@ -114,15 +115,15 @@ mod4 + {_,shift + }{1-9,0}
 #
 
 # preselect the direction
-mod4 + ctrl + {h,j,k,l}
+mod4 + shift + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
-mod4 + ctrl + {1-9}
+mod4 + shift + {1-9}
 	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
-mod4 + ctrl + space
+mod4 + shift + space
 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
@@ -146,5 +147,5 @@ mod4 + {Left,Down,Up,Right}
 	bspc node -v {-60 0,0 60,0 -60,60 0}
 
 # equalize
-mod4 + shift + b
+mod4 + e
 	bspc node @/ -E
