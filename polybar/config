@@ -20,8 +20,8 @@
 ; from xresources
 foreground = ${xrdb:foreground}
 foreground-alt = ${xrdb:color8}
-;background = ${xrdb:background}
-background = #000000
+background = ${xrdb:background}
+;background = #000000
 background-alt = ${xrdb:background}
 primary = ${xrdb:color4}
 secondary = ${xrdb:color2}
@@ -259,7 +259,7 @@ date = "%a %b %d"
 ;date = "%s"
 date-alt = " %Y-%m-%d"
 
-time = %I:%M %p
+time = " %d-%b-%y   %I:%M %p"
 time-alt = %H:%M:%S
 
 ;format-prefix = "📆"
