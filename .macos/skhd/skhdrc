@@ -1,6 +1,8 @@
 # apps
 # TODO :: once yabai is fixed, uncomment other bindings
 alt - return : open -na /Applications/Alacritty.app
+ctrl + cmd + shift - b : open -na /Applications/Google\ Chrome.app
+ctrl + cmd + shift - e : open -a /Applications/Emacs.app
 #cmd + alt - i : open -na /Applications/Google\ Chrome.app
 #cmd + alt - s : open -a /Applications/Slack.app
 #cmd + alt - a : open -a /Applications/Sequel\ Ace.app
