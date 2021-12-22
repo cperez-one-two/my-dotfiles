@@ -23,16 +23,16 @@ XF86MonBrightness{Up,Down}
     brightness {up,down}
 
 # programs
-ctrl + alt + shift + b
-	$BROWSER
-ctrl + alt + shift + t
-	telegram-desktop
-ctrl + alt + shift + e
-    emacs
-ctrl + alt + shift + k
-    keepassxc
-ctrl + alt + shift + f
-    firefox
+ctrl + alt + mod4 + b
+     $BROWSER
+ctrl + alt + mod4 + t
+     telegram-desktop
+ctrl + alt + mod4 + e
+     emacs
+ctrl + alt + mod4 + k
+     keepassxc
+ctrl + alt + mod4 + f
+     firefox
 
 #
 # bspwm
