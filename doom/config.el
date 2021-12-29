@@ -181,5 +181,5 @@
   (setq org-agenda-files (append (my/org-roam-list-notes-by-tag "Project") (my/org-roam-list-notes-by-tag "Ticket"))))
 
 ;; Build the agenda list the first time for the session
-;; Auto grabs todos from project files for org-agenda
+;; TODO :: figure out why no run on startup
 (my/org-roam-refresh-agenda-list)
