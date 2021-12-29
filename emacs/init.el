@@ -10,14 +10,11 @@
 ;; font
 (set-face-attribute 'default nil :font "Iosevka Nerd Font Mono" :height 120)
 
-;; Make escape do C-g in prompt
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 ;; Initialize package repos
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa")
+			 ("org" . "https://orgmode.org/elpa/")
 			 ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
@@ -37,19 +34,31 @@
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
 		term-mode-hook
+		shell-mode-hook
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (use-package command-log-mode)
-
-(use-package ivy
+ 
+(use-package counsel
   :diminish
-  :bind (:map
-	 ivy-minibuffer-map
+  :bind (("C-s" . swiper)
+	 :map ivy-minibuffer-map
 	 ("TAB" . ivy-alt-done))
+  :demand
   :config
-  (ivy-mode 1))
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-wrap t))
+
 
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
+
+(use-package doom-themes
+  :ensure t
+  :init (load-theme 'doom-palenight t))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
