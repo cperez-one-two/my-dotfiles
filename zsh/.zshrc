@@ -35,8 +35,8 @@ SAVEHIST=100000
 # Source aliases
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
-# Vi mode
-bindkey -v
+# emacs mode
+bindkey -e
 export KEYTIMEOUT=1
 
 # Auto/tab complete
@@ -47,25 +47,25 @@ compinit
 
 
 # Keybinds
-bindkey '^[[P' delete-char                      # Delete key fix
-bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'    # fzf
+#bindkey '^[[P' delete-char                      # Delete key fix
+#bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'    # fzf
 
 # Change cursor shape for different vi modes.
-function zle-keymap-select () {
-    case $KEYMAP in
-        vicmd) echo -ne '\e[2 q';;      # Solid Block
-        #viins|main) echo -ne '\e[1 q';; # Blinking Block
-        viins|main) echo -ne '\e[3 q';; # Beam
-    esac
-}
-zle -N zle-keymap-select
-zle-line-init() {
-    echo -ne "\e[3 q"
-    #echo -ne "\e[1 q"
-}
-zle -N zle-line-init
-echo -ne '\e[3 q'                       # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[3 q' ;}        # Use beam shape cursor for each new prompt.
+#function zle-keymap-select () {
+#    case $KEYMAP in
+#        vicmd) echo -ne '\e[2 q';;      # Solid Block
+#        #viins|main) echo -ne '\e[1 q';; # Blinking Block
+#        viins|main) echo -ne '\e[3 q';; # Beam
+#    esac
+#}
+#zle -N zle-keymap-select
+#zle-line-init() {
+#    echo -ne "\e[3 q"
+#    #echo -ne "\e[1 q"
+#}
+#zle -N zle-line-init
+#echo -ne '\e[1 q'                       # Use beam shape cursor on startup.
+#preexec() { echo -ne '\e[3 q' ;}        # Use beam shape cursor for each new prompt.
 
 # fnm
 eval "`fnm env`"
