@@ -14,8 +14,8 @@ Plug 'liuchengxu/vim-which-key'                             " Whichkey - Port of
 Plug 'AckslD/nvim-whichkey-setup.lua'                       " Lua wrapper for Whichkey
 Plug 'kyazdani42/nvim-web-devicons'                         " for file icons
 Plug 'kyazdani42/nvim-tree.lua'                             " Filetree
-"Plug 'navarasu/onedark.nvim'                               " Colorscheme
-Plug 'overcache/NeoSolarized'                               " Colorscheme
+Plug 'navarasu/onedark.nvim'                               " Colorscheme
+"Plug 'overcache/NeoSolarized'                               " Colorscheme
 Plug 'steelsojka/pears.nvim'                                " auto-pairs
 Plug 'lukas-reineke/indent-blankline.nvim'                  " indent guides
 Plug 'hoob3rt/lualine.nvim'                                 " status line
