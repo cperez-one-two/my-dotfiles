@@ -4,6 +4,11 @@
 "      \ }
 
 " Solarized
+"let g:lightline = {
+"       \ 'colorscheme': 'solarized',
+"       \ }
+
+" onedark
 let g:lightline = {
-       \ 'colorscheme': 'solarized',
+       \ 'colorscheme': 'onedark',
        \ }
