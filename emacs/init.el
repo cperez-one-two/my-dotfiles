@@ -8,7 +8,7 @@
 (setq visible-bell t)
 
 ;; font
-(set-face-attribute 'default nil :font "Iosevka Nerd Font Mono" :height 160)
+(set-face-attribute 'default nil :font "Iosevka Nerd Font Mono" :height 130)
 
 ;; Initialize package repos
 (require 'package)
@@ -42,7 +42,12 @@
  
 (use-package counsel
   :diminish
-  :bind (("C-s" . swiper)
+  :bind (("M-x" . counsel-M-x)
+	 ("C-x b" . counsel-ibuffer)
+	 ("C-x C-f" . counsel-find-file)
+	 :map minibuffer-local-map
+	 ("C-r" . 'counsel-minibuffer-history)
+	 ("C-s" . swiper)
 	 :map ivy-minibuffer-map
 	 ("TAB" . ivy-alt-done))
   :demand
@@ -51,14 +56,36 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-wrap t))
 
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
 
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
 
 (use-package doom-themes
-  :ensure t
+  ;;:init (load-theme 'doom-snazzy t)
+  ;;:init (load-theme 'doom-gruvbox t)
+  ;;:init (load-theme 'doom-horizon t)
   :init (load-theme 'doom-palenight t))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1.2))
+
+(use-package helpful
+  :ensure t
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
