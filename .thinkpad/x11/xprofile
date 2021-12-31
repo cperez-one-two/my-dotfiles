@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if xrandr | grep "VGA1 disconnected"; then
+ xrandr --output LVDS1 --auto --primary --output VGA1 --off
+elif xrandr | grep "HDMI2 disconnected"; then
+ xrandr --output VGA1 --auto --primary
+else
+ xrandr --output LVDS1 --off --output VGA1 --auto --output HDMI2 --mode 2560x1080_42 --primary --left-of VGA1
+fi
+
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources &
+xset s off
+xset dpms 0 0 0
+
+#$HOME/.config/sxhkd/launch.sh &
+$HOME/.config/xinputd/launch.sh &
+$HOME/.config/polybar/launch.sh &
+[ ! -s ~/.config/mpd/pid ] && mpd &
+nm-applet &
+feh --bg-scale --no-xinerama "$HOME/.config/wallpaper/current-wallpaper.png" &
+xsetroot -cursor_name left_ptr &
+killall unclutter ; unclutter -b --timeout 3 &
+killall picom ; picom -b &
+
+## Startup Apps
+keepassxc &
+megasync &
+
+# Dock/Undocking laptop
+## killall -w dockd ; dockd --daemon &
+
+# Java window fix
+wmname LG3D
