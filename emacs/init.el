@@ -45,9 +45,9 @@
   :bind (("M-x" . counsel-M-x)
 	 ("C-x b" . counsel-ibuffer)
 	 ("C-x C-f" . counsel-find-file)
+	 ("C-s" . swiper)
 	 :map minibuffer-local-map
 	 ("C-r" . 'counsel-minibuffer-history)
-	 ("C-s" . swiper)
 	 :map ivy-minibuffer-map
 	 ("TAB" . ivy-alt-done))
   :demand
@@ -59,6 +59,10 @@
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
+
+;; NOTE: The fist time you load this on a new machine, be sure to run:
+;; M-x all-the-icons-install-fonts
+(use-package all-the-icons)
 
 (use-package doom-modeline
   :ensure t
@@ -89,3 +93,6 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
+
+;; TODO
+;;(use-package general)
