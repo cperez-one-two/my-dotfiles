@@ -94,5 +94,22 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
-;; TODO
-;;(use-package general)
+(use-package general
+  :config
+  (general-create-definer efs/leader-key
+    :prefix "C-c")
+
+  (efs/leader-key
+    "t"  '(:ignore t :which-key "toggles")
+    "tt" '(counsel-load-theme :which-key "choose theme")))
+
+(use-package hydra)
+
+(defhydra hydra-text-scale (:timeout 4)
+  "scale text"
+  ("n" text-scale-increase "up")
+  ("p" text-scale-decrease "down")
+  ("q" nil "finish and exit" :exit t))
+
+(efs/leader-key
+  "ts"  '(hydra-text-scale/body :which-key "scale text"))
