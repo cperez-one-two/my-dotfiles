@@ -1,0 +1,228 @@
+!Charlies Xresources
+!
+!Terminal Appearance
+URxvt.font: 			xft:Source Code Pro:pixelsize=16;
+URxvt.scrollBar:		false
+URxvt.letterSpace: 		-1
+!*.alpha:                        0.9
+!	URxvt*inheritPixmap: true
+!	URxvt*transparent: true
+! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+!	URxvt*shading: 15
+!
+! Dracula Xresources palette
+! *.foreground: #F8F8F2
+! *.background: #282A36
+! *.color0:     #000000
+! *.color8:     #4D4D4D
+! *.color1:     #FF5555
+! *.color9:     #FF6E67
+! *.color2:     #50FA7B
+! *.color10:    #5AF78E
+! *.color3:     #F1FA8C
+! *.color11:    #F4F99D
+! *.color4:     #BD93F9
+! *.color12:    #CAA9FA
+! *.color5:     #FF79C6
+! *.color13:    #FF92D0
+! *.color6:     #8BE9FD
+! *.color14:    #9AEDFE
+! *.color7:     #BFBFBF
+! *.color15:    #E6E6E6
+!! Theme 'Navy and Ivory'
+!! special
+!*.foreground:   #fdefce
+!*.background:   #021b21
+!*.cursorColor:  #fdefce
+!
+!! black
+!*.color0:       #032c36
+!*.color8:       #065f73
+!
+!! red
+!*.color1:       #c2454e
+!*.color9:       #ef5847
+!
+!! green
+!*.color2:       #7cbf9e
+!*.color10:      #a2d9b1
+!
+!! yellow
+!*.color3:       #8a7a63
+!*.color11:      #beb090
+!
+!! blue
+!*.color4:       #2e3340
+!*.color12:      #61778d
+!
+!! magenta *.color5:       #ff5879
+!*.color13:      #ff99a1
+!
+!! cyan
+!*.color6:       #44b5b1
+!*.color14:      #9ed9d8
+!
+!! white
+!*.color7:       #f2f1b9
+!*.color15:      #f6f6c9
+!! Theme Solarized
+!!
+!! special
+!*.foreground:   #b0c1c1
+!*.background:   #002b36
+!*.cursorColor:  #b0c1c1
+!
+!! black
+!*.color0:       #002b36
+!*.color8:       #657b83
+!
+!! red
+!*.color1:       #dc322f
+!*.color9:       #dc322f
+!
+!! green
+!*.color2:       #859900
+!*.color10:      #859900
+!
+!! yellow
+!*.color3:       #b58900
+!*.color11:      #b58900
+!
+!! blue
+!*.color4:       #268bd2
+!*.color12:      #268bd2
+!
+!! magenta
+!*.color5:       #6c71c4
+!*.color13:      #6c71c4
+!
+!! cyan
+!*.color6:       #2aa198
+!*.color14:      #2aa198
+!
+!! white
+!*.color7:       #93a1a1
+!*.color15:      #fdf6e3
+!! Theme simple_rainbow
+!! special
+!*.foreground:   #dcdccc
+!*.background:   #242424
+!*.cursorColor:  #dcdccc
+!
+!! black
+!*.color0:       #666666
+!*.color8:       #888888
+!
+!! red
+!*.color1:       #ff8278
+!*.color9:       #ff8278
+!
+!! green
+!*.color2:       #bde077
+!*.color10:      #bde077
+!
+!! yellow
+!*.color3:       #eadc84
+!*.color11:      #eadc84
+!
+!! blue
+!*.color4:       #77bee0
+!*.color12:      #77bee0
+!
+!! magenta
+!*.color5:       #dd91f3
+!*.color13:      #dd91f3
+!
+!! cyan
+!*.color6:       #ffc178
+!*.color14:      #ffc178
+!
+!! white
+!*.color7:       #dddddd
+!*.color15:      #cccccc
+!*.foreground:   #daba8b
+!*.background:   #212121
+! Theme confy
+! special
+!*.foreground:   #daba8b
+!*.background:   #212121
+!*.cursorColor:  #daba8b
+!
+!! black
+!*.color0:       #0f0e0d
+!*.color8:       #6e685e
+!
+!! red
+!*.color1:       #b84949
+!*.color9:       #e35555
+!
+!! green
+!*.color2:       #8a8a29
+!*.color10:      #bdbd31
+!
+!! yellow
+!*.color3:       #cc9952
+!*.color11:      #f5b65f
+!
+!! blue
+!*.color4:       #68689c
+!*.color12:      #7e7ec8
+!
+!! magenta
+!*.color5:       #ad8282
+!*.color13:      #d29e9e
+!
+!! cyan
+!*.color6:       #cc8933
+!*.color14:      #faa639
+!
+!! white
+!*.color7:       #aa9878
+!*.color15:      #f1dbb5
+!! Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+! Copyright (c) 2016-present Sven Greb <code@svengreb.de>
+
+! Project:    Nord XResources
+! Version:    0.1.0
+! Repository: https://github.com/arcticicestudio/nord-xresources
+! License:    MIT
+
+#define nord0 #2E3440
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #4C566A
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+*.foreground:   nord4
+*.background:   nord0
+*.cursorColor:  nord4
+*fading: 35
+*fadeColor: nord3
+
+*.color0: nord1
+*.color1: nord11
+*.color2: nord14
+*.color3: nord13
+*.color4: nord9
+*.color5: nord15
+*.color6: nord8
+*.color7: nord5
+*.color8: nord3
+*.color9: nord11
+*.color10: nord14
+*.color11: nord13
+*.color12: nord9
+*.color13: nord15
+*.color14: nord7
+*.color15: nord6
