@@ -1,4 +1,4 @@
-;; chrisPmacs
+;;; chrisPmacs
 ;; remove default fluff
 (setq inhibit-startup-message t)
 (scroll-bar-mode -1)
@@ -39,7 +39,7 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (use-package command-log-mode)
- 
+
 (use-package counsel
   :diminish
   :bind (("M-x" . counsel-M-x)
