@@ -1,11 +1,5 @@
 .macos/zsh/.zcompdump
-<<<<<<< HEAD
-.macos/nvim/autoload/plugged/nvim-colorizer.lua
-.macos/nvim/autoload/plugged/nvim-compe
-.macos/nvim/autoload/plugged/nvim-lspconfig
-=======
 .macos/nvim/autoload
->>>>>>> 62687fb1bb93f755f6adcc4b2e171a9ee760ca52
 nvim/autoload
 zsh/.zcompdump
 .share/
