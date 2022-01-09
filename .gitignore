@@ -10,3 +10,4 @@ nvim/autoload
 zsh/.zcompdump
 .share/
 .DS_Store
+.zcompdump
