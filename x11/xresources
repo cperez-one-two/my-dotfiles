@@ -38,38 +38,75 @@
 !*color15: #ebdbb2
 ! Twilight Dark
 ! special
-*.foreground:   #a7a7a7
-*.background:   #000000
-*.cursorColor:  #a7a7a7
+! *.foreground:   #a7a7a7
+! *.background:   #000000
+! *.cursorColor:  #a7a7a7
+
+! ! black
+! *.color0:       #1e1e1e
+! *.color8:       #5f5a60
+
+! ! red
+! *.color1:       #cf6a4c
+! *.color9:       #cf6a4c
+
+! ! green
+! *.color2:       #8f9d6a
+! *.color10:      #8f9d6a
+
+! ! yellow
+! *.color3:       #f9ee98
+! *.color11:      #f9ee98
+
+! ! blue
+! *.color4:       #7587a6
+! *.color12:      #7587a6
+
+! ! magenta
+! *.color5:       #9b859d
+! *.color13:      #9b859d
+
+! ! cyan
+! *.color6:       #afc4db
+! *.color14:      #afc4db
+
+! ! white
+! *.color7:       #a7a7a7
+! *.color15:      #ffffff
+
+! palenight
+! special
+*.foreground:	  #d0d0d0
+*.background: 	  #292d3e
 
 ! black
-*.color0:       #1e1e1e
-*.color8:       #5f5a60
+ *.color0:       #292d3e
+ *.color8:       #434758
 
 ! red
-*.color1:       #cf6a4c
-*.color9:       #cf6a4c
+*.color1:       #f07178
+*.color9:       #ff8b92
 
 ! green
-*.color2:       #8f9d6a
-*.color10:      #8f9d6a
+*.color2:       #c3e88d
+*.color10:      #ddffa7
 
 ! yellow
-*.color3:       #f9ee98
-*.color11:      #f9ee98
+*.color3:       #ffcb6b
+*.color11:      #ffe585
 
 ! blue
-*.color4:       #7587a6
-*.color12:      #7587a6
+*.color4:       #82aaff
+*.color12:      #9cc4ff
 
 ! magenta
-*.color5:       #9b859d
-*.color13:      #9b859d
+*.color5:       #c792ea
+*.color13:      #e1acff
 
 ! cyan
-*.color6:       #afc4db
-*.color14:      #afc4db
+*.color6:       #89ddff
+*.color14:      #a3f7ff
 
 ! white
-*.color7:       #a7a7a7
+*.color7:       #d0d0d0
 *.color15:      #ffffff
