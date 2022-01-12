@@ -11,7 +11,7 @@ unclutter -b --timeout 3 &
 if xrandr | grep "HDMI-2 disconnected" ; then
 	bspc monitor 'eDP-1' -d I II III IV V VI VII VIII IX X
 else
-	xrandr --output 'eDP-1' --pos 320x1080 --auto --output 'HDMI-2' --mode 2560x1080 --primary --pos 0x0
+	xrandr --output 'eDP-1' --pos 320x1080 --output 'HDMI-2' --mode 2560x1080 --primary --pos 0x0 --above 'eDP-1'
 	bspc monitor 'eDP-1' -d I II III
 	bspc monitor 'HDMI-2' -d  IV V VI VII VIII IX X
 fi
