@@ -1,78 +1,94 @@
-# chrisP's cwm config
+# chrisp's .cwmrc
 
-## appearance
-borderwidth		1
-gap			8 8 8 8
-color activeborder	#abb2bf
-color inactiveborder	#1e2127
-color font	#abb2bf
-color menubg	#1e2127
-color menufg	#abb2bf
-color selfont	#1e2127
-snapdist		40
-
-## settings
-ignore polybar
-ignore trayer
-#ignore MEGAsync
-moveamount 16
 sticky yes
+snapdist 4
+moveamount 5
 unbind-key all
 
-## bindings
-bind-key M4-r		restart
-bind-key M4-q		quit
-bind-key 4S-space		menu-window
-bind-key 4C-space		menu-window-hidden
+fontname "Ubuntu:style=Regular:size=12"
 
-## windows
-bind-key CM-h			window-snap-left
-bind-key CM-l			window-snap-right
-bind-key CM-k			window-snap-up
-bind-key CM-j			window-snap-down
-bind-key 4-w			window-close
-bind-key CM-m			window-maximize
-bind-key 4-Tab		window-cycle
-bind-key 4S-Tab		window-rcycle
-bind-key 4-j			window-cycle-ingroup
-bind-key 4-k			window-rcycle-ingroup
-bind-key 4S-h			window-move-left-big
-bind-key 4S-j			window-move-down-big
-bind-key 4S-k			window-move-up-big
-bind-key 4S-l			window-move-right-big
-bind-key M4-h			window-resize-left
-bind-key M4-j			window-resize-down
-bind-key M4-k			window-resize-up
-bind-key M4-l			window-resize-right
-bind-key CM-equal			window-vmaximize
+# groups
+bind-key 4-1 group-only-1
+bind-key 4-2 group-only-2
+bind-key 4-3 group-only-3
+bind-key 4-4 group-only-4
+bind-key 4-5 group-only-5
+bind-key 4-6 group-only-6
+bind-key 4-7 group-only-7
+bind-key 4-8 group-only-8
+bind-key 4-9 group-only-9
+bind-key 4S-1 window-movetogroup-1
+bind-key 4S-2 window-movetogroup-2
+bind-key 4S-3 window-movetogroup-3
+bind-key 4S-4 window-movetogroup-4
+bind-key 4S-5 window-movetogroup-5
+bind-key 4S-6 window-movetogroup-6
+bind-key 4S-7 window-movetogroup-7
+bind-key 4S-8 window-movetogroup-8
+bind-key 4S-9 window-movetogroup-9
 
-## groups
-bind-key 4-l			group-cycle
-bind-key 4-h			group-rcycle
-bind-key 4-1			group-only-1
-bind-key 4-2			group-only-2
-bind-key 4-3			group-only-3
-bind-key 4-7			group-only-7
-bind-key 4-8			group-only-8
-bind-key 4-9			group-only-9
-bind-key 4C-1			group-toggle-1
-bind-key 4C-2			group-toggle-2
-bind-key 4C-3			group-toggle-3
-bind-key 4C-7			group-toggle-7
-bind-key 4C-8			group-toggle-8
-bind-key 4C-9			group-toggle-9
-bind-key 4-a			group-toggle-all
-bind-key 4S-1			window-movetogroup-1
-bind-key 4S-2			window-movetogroup-2
-bind-key 4S-3			window-movetogroup-3
-bind-key 4S-7			window-movetogroup-7
-bind-key 4S-8			window-movetogroup-8
-bind-key 4S-9			window-movetogroup-9
-bind-key 4-g			window-group
-autogroup 0				'megasync, MEGAsync'
+# execs
+#bind-key 4-Return '/usr/bin/alacritty'
 
-## mouse
+# keybinds
+bind-key 4-d menu-cmd
+bind-key 4-Tab window-cycle
+bind-key 4S-Tab window-rcycle
+bind-key 4M-Tab group-cycle
+bind-key 4MS-Tab group-rcycle
+bind-key 4-m window-maximize
+bind-key 4M-v window-vmaximize
+bind-key 4M-h window-hmaximize
+bind-key 4-n window-snap-down 
+bind-key 4-p window-snap-up
+bind-key 4-b window-snap-left
+bind-key 4-f window-snap-right 
+bind-key 4-w window-close
+bind-key 4-s window-stick
+bind-key 4-h window-hide
+bind-key 4S-h menu-window-hidden
+bind-key 4M-r restart
+bind-key 4M-q quit
+
+# window movement
+bind-key 4S-Left window-move-left-big
+bind-key 4S-Down window-move-down-big
+bind-key 4S-Up window-move-up-big
+bind-key 4S-Right window-move-right-big
+bind-key 4-Left window-move-left
+bind-key 4-Down window-move-down
+bind-key 4-Up window-move-up
+bind-key 4-Right window-move-right
+
+# window resize
+bind-key 4MS-Left window-resize-left-big
+bind-key 4MS-Down window-resize-down-big
+bind-key 4MS-Up window-resize-up-big
+bind-key 4MS-Right window-resize-right-big
+bind-key 4M-Left window-resize-left
+bind-key 4M-Down window-resize-down
+bind-key 4M-Up window-resize-up
+bind-key 4M-Right window-resize-right
+
+# mousebinds
 unbind-mouse all
+
 bind-mouse 4-3 window-resize
 bind-mouse 4-1 window-move
-bind-mouse 4-2 window-lower
+bind-mouse 4S-1 window-lower
+
+# other
+borderwidth 1
+ignore polybar
+ignore megasync
+gap 30 5 5 5
+autogroup 0 "polybar,Polybar"
+autogroup 0 "keepassxc,KeePassXC"
+
+# colors
+color menufg  "#d0d0d0"
+color menubg  "#292d3e"
+color font    "#d0d0d0"
+color selfont "#ffffff"
+color activeborder      "#d0d0d0"
+color inactiveborder    "#434758"

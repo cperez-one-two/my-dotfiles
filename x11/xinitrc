@@ -17,5 +17,6 @@ fi
 [[ -f ~/.config/x11/xresources ]] && xrdb -merge ~/.config/x11/xresources
 
 # wm
-#cwm -c $CWMRC
-exec bspwm 2> $HOME/.cache/bspwm/log
+#exec bspwm 2> $HOME/.cache/bspwm/log
+cwm -c $CWMRC
+

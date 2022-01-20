@@ -13,3 +13,14 @@ blueman-applet &
 wmname LG3D
 keepassxc &
 megasync &
+
+# apps
+pgrep -x sxhkd > /dev/null || sxhkd &
+picom &
+unclutter -b --timeout 3 &
+
+# monitors
+xrandr --output 'eDP-1' --off --output 'HDMI-2' --mode 2560x1080
+
+feh --bg-center "$HOME/.local/share/bg" &
+$XDG_CONFIG_HOME/polybar/launch.sh &

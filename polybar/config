@@ -82,6 +82,44 @@ wm-restack = bspwm
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+[bar/cwmbar]
+monitor = ${env:MONITOR:eDP-1}
+tray-position = ${env:TRAY_POSITION:right}
+;monitor = eDP-1
+;tray-position = right
+;tray-padding = 2
+tray-background = ${colors:background}
+width = 100%
+height = 30
+;offset-x = 5%
+;offset-y = 1%
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #268bd2
+
+padding-left = 1
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = UbuntuMono Nerd Font:style=Regular:pixelsize=14;
+font-1 = Noto Color Emoji:style=Regular:scale=10;
+font-2 = Noto Sans Symbols2:style=Regular:pixelsize=11;
+
+modules-left = ewmh title
+;modules-center =
+modules-right = ticker-crypto pulseaudio filesystem cpu memory battery battery-1 temperature date powermenu
+cursor-click = pointer
+
 [module/filesystem]
 type = internal/fs
 interval = 25
@@ -142,6 +180,49 @@ label-urgent = 綠
 label-urgent-background = ${colors.red}
 label-urgent-padding = 1
 
+[module/ewmh]
+type = internal/xworkspaces
+
+pin-workspaces = false
+enable-scroll = false
+enable-click = true
+
+icon-0 = nogroup;x
+icon-1 = one;i
+icon-2 = two;ii
+icon-3 = three;iii
+icon-4 = four;iv
+icon-5 = five;v
+icon-6 = six;vi
+icon-7 = seven;vii
+icon-8 = eight;viii
+icon-9 = nine;ix
+format = <label-state>
+label-monitor = %name%
+
+label-active = %icon%
+label-active-foreground = ${colors.background}
+label-active-background = ${colors.foreground}
+;label-active-underline= #6790eb
+label-active-padding = 1
+
+label-occupied = %icon%
+label-occupied-background = ${colors.background}
+label-occupied-foreground = ${colors.foreground}
+label-occupied-padding = 1
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.alert}
+label-urgent-underline = ${colors.alert}
+label-urgent-padding = 1
+
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 1
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
 [module/title]
 type = internal/xwindow
