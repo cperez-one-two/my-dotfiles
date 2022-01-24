@@ -95,7 +95,9 @@
 (after! org
    (map! :map org-mode-map
          :n "M-j" #'org-metadown
-         :n "M-k" #'org-metaup))
+         :n "M-k" #'org-metaup)
+   (setq org-ellipsis " ▾"
+         org-hide-emphasis-markers t))
 
 ;; Org-roam
 (map! :leader
@@ -182,4 +184,5 @@
 
 ;; Build the agenda list the first time for the session
 ;; TODO :: figure out why no run on startup
-(my/org-roam-refresh-agenda-list)
+(with-eval-after-load 'org-roam
+  (my/org-roam-refresh-agenda-list))

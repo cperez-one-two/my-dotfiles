@@ -52,3 +52,4 @@
 (unpin! org-roam company-org-roam)
 
 (package! org-super-agenda)
+(package! exec-path-from-shell :ignore (not IS-MAC))
