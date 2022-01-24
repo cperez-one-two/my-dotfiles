@@ -11,13 +11,22 @@
 (defvar efs/default-font-size 130)
 (defvar efs/default-variable-font-size 130)
 
+;; later used to configure UI elements
 (set-face-attribute 'default nil :font "Iosevka Nerd Font Mono" :height efs/default-font-size)
-
-;; Set the fixed pitch faec
 (set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font Mono" :height efs/default-font-size)
-
-;; Set the variable pitch face
 (set-face-attribute 'variable-pitch nil :font "Iosevka" :height efs/default-variable-font-size :weight 'medium)
+
+(column-number-mode)
+(global-display-line-numbers-mode t)
+
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+		term-mode-hook
+		shell-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+
 ;; Initialize package repos
 (require 'package)
 
@@ -35,16 +44,6 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
-
-(column-number-mode)
-(global-display-line-numbers-mode t)
-
-;; Disable line numbers for some modes
-(dolist (mode '(org-mode-hook
-		term-mode-hook
-		shell-mode-hook
-		eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (use-package command-log-mode)
 
