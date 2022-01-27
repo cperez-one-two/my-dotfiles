@@ -2,7 +2,7 @@
 
 sticky yes
 snapdist 4
-moveamount 5
+moveamount 10
 unbind-key all
 
 fontname "Ubuntu:style=Regular:size=12"
@@ -78,17 +78,19 @@ bind-mouse 4-1 window-move
 bind-mouse 4S-1 window-lower
 
 # other
-borderwidth 1
+borderwidth 3
 ignore polybar
-ignore megasync
+ignore MEGAsync
 gap 30 5 5 5
-autogroup 0 "polybar,Polybar"
+#autogroup 0 "polybar,Polybar"
+#autogroup 0 "Polybar tray window,tray"
 autogroup 0 "keepassxc,KeePassXC"
+autogroup 0 "megasync,MEGAsync"
 
 # colors
 color menufg  "#d0d0d0"
 color menubg  "#292d3e"
 color font    "#d0d0d0"
-color selfont "#ffffff"
-color activeborder      "#d0d0d0"
-color inactiveborder    "#434758"
+color selfont "#292d3e"
+color activeborder      "#c792ea"
+color inactiveborder    "#292d3e"

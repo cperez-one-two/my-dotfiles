@@ -95,7 +95,6 @@ height = 30
 ;offset-y = 1%
 radius = 0
 fixed-center = true
-
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -117,7 +116,7 @@ font-2 = Noto Sans Symbols2:style=Regular:pixelsize=11;
 
 modules-left = ewmh title
 ;modules-center =
-modules-right = ticker-crypto pulseaudio filesystem cpu memory battery battery-1 temperature date powermenu
+modules-right = ticker-crypto pulseaudio filesystem cpu memory battery battery-1 temperature date
 cursor-click = pointer
 
 [module/filesystem]
@@ -187,16 +186,16 @@ pin-workspaces = false
 enable-scroll = false
 enable-click = true
 
-icon-0 = nogroup;x
-icon-1 = one;i
-icon-2 = two;ii
-icon-3 = three;iii
-icon-4 = four;iv
-icon-5 = five;v
-icon-6 = six;vi
-icon-7 = seven;vii
-icon-8 = eight;viii
-icon-9 = nine;ix
+icon-0 = nogroup;0
+icon-1 = one;1
+icon-2 = two;2
+icon-3 = three;3
+icon-4 = four;4
+icon-5 = five;5
+icon-6 = six;6
+icon-7 = seven;7
+icon-8 = eight;8
+icon-9 = nine;9
 format = <label-state>
 label-monitor = %name%
 
