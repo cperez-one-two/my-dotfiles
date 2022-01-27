@@ -26,11 +26,41 @@
 (set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font Mono" :height efs/default-font-size)
 (set-face-attribute 'variable-pitch nil :font "Iosevka" :height efs/default-variable-font-size :weight 'medium)
 
+;; Initialize package repos
+(require 'package)
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+(use-package counsel
+  :diminish
+  :bind (("M-x" . counsel-M-x)
+         ("C-x b" . counsel-ibuffer)
+         ("C-x C-f" . counsel-find-file)
+         ("C-s" . swiper)
+         :map minibuffer-local-map
+         ("C-r" . 'counsel-minibuffer-history)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done))
+  :demand
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-wrap t))
+
 (with-eval-after-load 'org
   (org-babel-do-load-languages
       'org-babel-load-languages
       '((emacs-lisp . t)
-      (python . t))))
+      (python . t)))
+  (push '("conf-unix" . conf-unix) org-src-lang-modes))
 
 ;; This is needed as of Org 9.2
 (require 'org-tempo)
@@ -41,8 +71,8 @@
 
 ;; Automatically tangle our Emacs.org config file when we save it
 (defun efs/org-babel-tangle-config ()
-  (when (string-equal (file-name-directory (buffer-file-name))
-                      (expand-file-name user-emacs-directory))
+  (when (string-equal (buffer-file-name)
+                      (expand-file-name "~/dotfiles/emacs/Emacs.org"))
     ;; Dynamic scoping to the rescue
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
