@@ -1,0 +1,50 @@
+* Do Everything from Org Mode
+** Org Babel Basics
+~org-babel~ allows you to run code blocks within an org file. This allows for many things, including what interests me the most: *Literate Programming*
+
+Before we can execute any code, we must first load the languages for ~org-babel~:
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'org
+  (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+      (python . t))))
+#+end_src
+
+Here's an example code block. We can print the results of this code execution below:
+
+#+begin_src python :results output
+def greeting():
+  return "Hello!"
+
+print(greeting())
+#+end_src
+
+#+RESULTS:
+: Hello!
+
+*** Structure Templates
+Structure templates are shortcuts to create code blocks quickly. Once you make a shortcut, you can use it by typing '<' followed by your shortcut, plus TAB. Example: if your shortcut for emacs-lisp is 'el', you'd type '<elTAB'
+
+#+begin_src emacs-lisp
+;; This is needed as of Org 9.2
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+#+end_src
+
+#+RESULTS:
+: ((py . src python) (el . src emacs-lisp) (sh . src shell) (a . export ascii) (c . center) (C . comment) (e . example) (E . export) (h . export html) (l . export latex) (q . quote) (s . src) (v . verse))
+
+Shortcut test:
+#+begin_src emacs-lisp
+(message "It worked!")
+#+end_src
+
+#+RESULTS:
+: It worked!
+
+
