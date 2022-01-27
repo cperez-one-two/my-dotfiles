@@ -225,7 +225,7 @@ cursor:
 #live_config_reload: true
 
 
-background_opacity: 0.9
+#background_opacity: 0.9
 
 # Shell
 #
@@ -864,7 +864,7 @@ schemes:
     # Default colors
     primary:
       background: '#292d3e'
-      foreground: '#d0d0d0'
+      foreground: '#ffffff'
 
     # Normal colors
     normal:
