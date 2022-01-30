@@ -975,7 +975,7 @@ schemes:
       green:   '#8c9440'
       yellow:  '#de935f'
       blue:    '#5f819d'
-      magenta: '#c9b4cf'
+      magenta: '#b294bb'
       cyan:    '#5e8d87'
       white:   '#707880'
  
@@ -986,7 +986,7 @@ schemes:
       green:   '#b5bd68'
       yellow:  '#f0c674'
       blue:    '#81a2be'
-      magenta: '#b294bb'
+      magenta: '#c9b4cf'
       cyan:    '#8abeb7'
       white:   '#c5c8c6'
 
