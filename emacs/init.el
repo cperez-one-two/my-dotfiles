@@ -7,56 +7,51 @@
 (menu-bar-mode -1)
 (setq visible-bell t)
 
-;; font
-(defvar efs/default-font-size 130)
-(defvar efs/default-variable-font-size 130)
-
-;; later used to configure UI elements
-(set-face-attribute 'default nil :font "Iosevka Nerd Font Mono" :height efs/default-font-size)
-(set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font Mono" :height efs/default-font-size)
-(set-face-attribute 'variable-pitch nil :font "Iosevka" :height efs/default-variable-font-size :weight 'medium)
-
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
-		term-mode-hook
-		shell-mode-hook
-		eshell-mode-hook))
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; font
+ (defvar efs/default-font-size 140)
+ (defvar efs/default-variable-font-size 140)
+
+ ;; later used to configure UI elements
+ ;; (set-face-attribute 'default nil :font "TerminessTTF Nerd Font Mono" :height efs/default-font-size)
+ ;; (set-face-attribute 'fixed-pitch nil :font "TerminessTTF Nerd Font Mono" :height efs/default-font-size)
+ ;; (set-face-attribute 'variable-pitch nil :font "TerminessTTF Nerd Font Mono" :height efs/default-variable-font-size :weight 'medium)
+(set-face-attribute 'default nil :font "Iosevka Nerd Font Mono" :height efs/default-font-size)
+(set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font Mono" :height efs/default-font-size)
+(set-face-attribute 'variable-pitch nil :font "Iosevka" :height efs/default-variable-font-size :weight 'medium)
 
 ;; Initialize package repos
 (require 'package)
-
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Initialize use-package on non-linux platforms
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
 (require 'use-package)
 (setq use-package-always-ensure t)
-
-(use-package command-log-mode)
 
 (use-package counsel
   :diminish
   :bind (("M-x" . counsel-M-x)
-	 ("C-x b" . counsel-ibuffer)
-	 ("C-x C-f" . counsel-find-file)
-	 ("C-s" . swiper)
-	 :map minibuffer-local-map
-	 ("C-r" . 'counsel-minibuffer-history)
-	 :map ivy-minibuffer-map
-	 ("TAB" . ivy-alt-done))
+         ("C-x b" . counsel-ibuffer)
+         ("C-x C-f" . counsel-find-file)
+         ("C-s" . swiper)
+         :map minibuffer-local-map
+         ("C-r" . 'counsel-minibuffer-history)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done))
   :demand
   :config
   (ivy-mode 1)
@@ -66,6 +61,17 @@
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
+
+(use-package helpful
+  :ensure t
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
 
 ;; NOTE: The fist time you load this on a new machine, be sure to run:
 ;; M-x all-the-icons-install-fonts
@@ -79,7 +85,8 @@
   ;;:init (load-theme 'doom-snazzy t)
   ;;:init (load-theme 'doom-gruvbox t)
   ;;:init (load-theme 'doom-horizon t)
-  :init (load-theme 'doom-palenight t))
+  ;;:init (load-theme 'doom-palenight t)
+  :init (load-theme 'doom-tomorrow-night t))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -89,17 +96,6 @@
   :diminish which-key-mode
   :config
   (setq which-key-idle-delay 1.2))
-
-(use-package helpful
-  :ensure t
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . counsel-describe-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
-  ([remap describe-key] . helpful-key))
 
 (use-package general
   :config
@@ -154,13 +150,13 @@
   :hook (org-mode . efs/org-mode-setup)
   :config
   (setq org-ellipsis " ▾"
-	org-hide-emphasis-markers t)
+        org-hide-emphasis-markers t)
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
   (setq org-agenda-files
-	'("~/dotfiles/emacs/hello.org"
-	  "~/dotfiles/emacs/birthdays.org")))
+        '("~/dotfiles/emacs/hello.org"
+          "~/dotfiles/emacs/birthdays.org")))
 
 (use-package org-bullets
   :hook (org-mode . org-bullets-mode)
@@ -199,3 +195,27 @@
 
 (use-package visual-fill-column
   :hook (org-mode . efs/org-mode-visual-fill))
+
+(with-eval-after-load 'org
+  (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+      (python . t)))
+  (push '("conf-unix" . conf-unix) org-src-lang-modes))
+
+;; This is needed as of Org 9.2
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+
+;; Automatically tangle our Emacs.org config file when we save it
+(defun efs/org-babel-tangle-config ()
+  (when (string-equal (buffer-file-name)
+                      (expand-file-name "~/dotfiles/emacs/Emacs.org"))
+    ;; Dynamic scoping to the rescue
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-tangle))))
+
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))

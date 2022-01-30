@@ -1,5 +1,5 @@
 #+title: Emacs From Scratch Configuration
-#+PROPERTY: header-args:emacs-lisp :tangle ./init-new.el
+#+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
 * Basic UI Configuration
 Disable some of the unwanted GUI elements to start. Enable column numbers globally. Disable for certain major modes.
@@ -93,8 +93,225 @@ Initialize the package repos. Refresh package contents if archive is nil.
 
 #+end_src
 
+*** Ivy Rich
+Returns more rich text in outputs.
+#+begin_src emacs-lisp
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
+
+#+end_src
+
+*** Helpful
+In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output in completion menus.
+#+begin_src emacs-lisp
+(use-package helpful
+  :ensure t
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
+
+#+end_src
+
+** Modeline
+~doom-modeline~ for modeline styling. ~all-the-icons~ ensures the icons are installed.
+#+begin_src emacs-lisp
+  ;; NOTE: The fist time you load this on a new machine, be sure to run:
+  ;; M-x all-the-icons-install-fonts
+  (use-package all-the-icons)
+
+  (use-package doom-modeline
+    :ensure t
+    :init (doom-modeline-mode 1))
+
+#+end_src
+
+** Theming
+~doom-themes~ is a theme library for a lot of different themes.
+#+begin_src emacs-lisp
+  (use-package doom-themes
+    ;;:init (load-theme 'doom-snazzy t)
+    ;;:init (load-theme 'doom-gruvbox t)
+    ;;:init (load-theme 'doom-horizon t)
+    ;;:init (load-theme 'doom-palenight t)
+    :init (load-theme 'doom-tomorrow-night t))
+
+#+end_src
+
+*** Rainbow Delimiters
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+    :hook (prog-mode . rainbow-delimiters-mode))
+
+#+end_src
+
+** which-key
+~which-key~ shows a minibuffer of all your keybinds.
+#+begin_src emacs-lisp
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1.2))
+
+#+end_src
+
+* Keybinds
+All keybinds are handled by ~general~. Leader key is assigned to ~C-c~, since it's the default and I want to make sure I don't overwrite package keybinds.
+#+begin_src emacs-lisp
+(use-package general
+  :config
+  (general-create-definer efs/leader-key
+    :prefix "C-c")
+
+  (efs/leader-key
+    "t"  '(:ignore t :which-key "toggles")
+    "tt" '(counsel-load-theme :which-key "choose theme")))
+
+#+end_src
+
+** Hydra
+~hydra~ is a package that allows for toggle binds. Toggling on a hydra allows binds that require rapid succession to be hit quickly.
+#+begin_src emacs-lisp
+  (use-package hydra)
+
+  (defhydra hydra-text-scale (:timeout 4)
+    "scale text"
+    ("n" text-scale-increase "up")
+    ("p" text-scale-decrease "down")
+    ("q" nil "finish and exit" :exit t))
+
+#+end_src
+
+** Binds
+#+begin_src emacs-lisp
+  (efs/leader-key
+    "ts"  '(hydra-text-scale/body :which-key "scale text"))
+
+#+end_src
+
+* Project Management
+~projectile~ gives additional project management tools.
+#+begin_src emacs-lisp
+  (use-package projectile
+    :diminish projectile-mode
+    :config (projectile-mode)
+    :custom ((projectile-completion-system 'ivy))
+    :bind-keymap
+    ("C-c p" . projectile-command-map)
+    :init
+    ;; NOTE: Set this to the folder where you keep your Git repos!
+    (when (file-directory-p "~/projects")
+      (setq projectile-project-search-path '("~/projects")))
+    (setq projectile-switch-project-action #'projectile-dired))
+
+  (use-package counsel-projectile
+    :after projectile
+    :config (counsel-projectile-mode))
+
+#+end_src
+
+** Git Management
+The definitive git tool in emacs: ~magit~
+#+begin_src emacs-lisp
+  (use-package magit
+    :commands (magit-status magit-get-current-branch)
+    :custom
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+#+end_src
+
+** TODO forge
+I honestly forgot what this package does, but I kept it in there to check it out later.
+#+begin_src emacs-lisp
+  ;; forge: allows you to use a lot of github features from within emacs
+  ;; (use-package forge)
+
+#+end_src
+
 * Org Mode
+No introduction needed. Not even going to attempt to contain all ~org-mode~ does into a sentence.
+
+** Basic Config
+Putting all basic settings in a function to use as a hook when ~org-mode~ is on in a buffer.
+#+begin_src emacs-lisp
+  (defun efs/org-mode-setup ()
+    (org-indent-mode)
+    ;(variable-pitch-mode 1)
+    (visual-line-mode 1))
+
+  (use-package org
+    :hook (org-mode . efs/org-mode-setup)
+    :config
+    (setq org-ellipsis " ▾"
+          org-hide-emphasis-markers t)
+    (setq org-agenda-start-with-log-mode t)
+    (setq org-log-done 'time)
+    (setq org-log-into-drawer t)
+    (setq org-agenda-files
+          '("~/dotfiles/emacs/hello.org"
+            "~/dotfiles/emacs/birthdays.org")))
+
+#+end_src
+
+** Theming
+Custom bulleting in GUI with ~org-bullets~
+#+begin_src emacs-lisp
+  (use-package org-bullets
+    :hook (org-mode . org-bullets-mode)
+    :custom
+    (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+#+end_src
+
+Variable font and sizes for headers
+#+begin_src emacs-lisp
+  (with-eval-after-load 'org-faces
+    ;; Set faces for heading levels
+    (dolist (face '((org-level-1 . 1.2)
+                    (org-level-2 . 1.1)
+                    (org-level-3 . 1.05)
+                    (org-level-4 . 1.0)
+                    (org-level-5 . 1.1)
+                    (org-level-6 . 1.1)
+                    (org-level-7 . 1.1)
+                    (org-level-8 . 1.1)))
+      (set-face-attribute (car face) nil :font "Iosevka" :weight 'medium :height (cdr face)))
+
+    ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+    (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-table nil    :inherit 'fixed-pitch)
+    (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
+    (set-face-attribute 'org-code nil     :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-table nil    :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-checkbox nil  :inherit 'fixed-pitch)
+    (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+    (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
+
+#+end_src
+
+~visual-fill-column~ centers the org buffer. Gives a document view.
+#+begin_src emacs-lisp
+  (defun efs/org-mode-visual-fill ()
+    (setq visual-fill-column-width 100
+          visual-fill-column-center-text t)
+    (visual-fill-column-mode 1))
+
+  (use-package visual-fill-column
+    :hook (org-mode . efs/org-mode-visual-fill))
+
+#+end_src
+
 ** Org-Babel
+~org-babel~ allows arbitrary code evaluation within org-mode code blocks.
 *** Load languages
 List of languages to load. ~conf-unix~ should pick up config files and highlight syntax of those too.
 
@@ -111,12 +328,13 @@ List of languages to load. ~conf-unix~ should pick up config files and highlight
 Enables the <[shortcut]TAB shortcut
 
 #+begin_src emacs-lisp
-;; This is needed as of Org 9.2
-(require 'org-tempo)
+  ;; This is needed as of Org 9.2
+  (require 'org-tempo)
 
-(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-(add-to-list 'org-structure-template-alist '("py" . "src python"))
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+
 #+end_src
 
 *** Auto-tangle Configuration Files
