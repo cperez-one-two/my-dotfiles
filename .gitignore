@@ -6,6 +6,7 @@ zsh/.zcompdump
 .DS_Store
 .zcompdump
 zsh/.zcompdump
-emacs/*.org~
-emacs/*.el~
+emacs/*
+emacs/!Emacs.org
+emacs/!init.el
 
