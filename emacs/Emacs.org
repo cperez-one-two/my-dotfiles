@@ -1,6 +1,7 @@
 #+title: Emacs From Scratch Configuration
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
+* TODO add :mkdirp yes once you figure out stow
 * Vanilla UI Configuration
 Disable some of the unwanted GUI elements to start. Enable column numbers globally. Disable for certain major modes.
 
@@ -96,25 +97,25 @@ Initialize the package repos. Refresh package contents if archive is nil.
 *** Ivy Rich
 Returns more rich text in outputs.
 #+begin_src emacs-lisp
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1))
+  (use-package ivy-rich
+    :init
+    (ivy-rich-mode 1))
 
 #+end_src
 
 *** Helpful
 In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output in completion menus.
 #+begin_src emacs-lisp
-(use-package helpful
-  :ensure t
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . counsel-describe-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
-  ([remap describe-key] . helpful-key))
+  (use-package helpful
+    :ensure t
+    :custom
+    (counsel-describe-function-function #'helpful-callable)
+    (counsel-describe-variable-function #'helpful-variable)
+    :bind
+    ([remap describe-function] . counsel-describe-function)
+    ([remap describe-command] . helpful-command)
+    ([remap describe-variable] . counsel-describe-variable)
+    ([remap describe-key] . helpful-key))
 
 #+end_src
 
@@ -153,25 +154,25 @@ In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output
 ** which-key
 ~which-key~ shows a minibuffer of all your keybinds.
 #+begin_src emacs-lisp
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 1.2))
+  (use-package which-key
+    :init (which-key-mode)
+    :diminish which-key-mode
+    :config
+    (setq which-key-idle-delay 1.2))
 
 #+end_src
 
 * Keybinds
 All keybinds are handled by ~general~. Leader key is assigned to ~C-c~, since it's the default and I want to make sure I don't overwrite package keybinds.
 #+begin_src emacs-lisp
-(use-package general
-  :config
-  (general-create-definer efs/leader-key
-    :prefix "C-c")
+  (use-package general
+    :config
+    (general-create-definer efs/leader-key
+      :prefix "C-c")
 
-  (efs/leader-key
-    "t"  '(:ignore t :which-key "toggles")
-    "tt" '(counsel-load-theme :which-key "choose theme")))
+    (efs/leader-key
+      "t"  '(:ignore t :which-key "toggles")
+      "tt" '(counsel-load-theme :which-key "choose theme")))
 
 #+end_src
 
