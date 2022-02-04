@@ -10,32 +10,32 @@
 !*foreground: #d8dee9
 !*background: #2e3440
 ! Tomorrow Dark
-!*foreground: #c5c8c6
-!*background: #1d1f21
-!! Black + DarkGrey
-!*color0:  #282828
-!*color8:  #928374
-!! DarkRed + Red
-!*color1:  #cc241d
-!*color9:  #fb4934
-!! DarkGreen + Green
-!*color2:  #98971a
-!*color10: #b8bb26
-!! DarkYellow + Yellow
-!*color3:  #d79921
-!*color11: #fabd2f
-!! DarkBlue + Blue
-!*color4:  #458588
-!*color12: #83a598
-!! DarkMagenta + Magenta
-!*color5:  #b16286
-!*color13: #d3869b
-!! DarkCyan + Cyan
-!*color6:  #689d6a
-!*color14: #8ec07c
-!! LightGrey + White
-!*color7:  #a89984
-!*color15: #ebdbb2
+*foreground: #c5c8c6
+*background: #1d1f21
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
 ! Twilight Dark
 ! special
 ! *.foreground:   #a7a7a7
@@ -74,39 +74,39 @@
 ! *.color7:       #a7a7a7
 ! *.color15:      #ffffff
 
-! palenight
+!! palenight
 ! special
-*.foreground:	  #d0d0d0
-*.background: 	  #292d3e
+!*.foreground:	  #d0d0d0
+!*.background: 	  #292d3e
 
-! black
- *.color0:       #292d3e
- *.color8:       #434758
+!! black
+! *.color0:       #292d3e
+! *.color8:       #434758
 
 ! red
-*.color1:       #f07178
-*.color9:       #ff8b92
+!*.color1:       #f07178
+!*.color9:       #ff8b92
 
 ! green
-*.color2:       #c3e88d
-*.color10:      #ddffa7
+!*.color2:       #c3e88d
+!*.color10:      #ddffa7
 
 ! yellow
-*.color3:       #ffcb6b
-*.color11:      #ffe585
+!*.color3:       #ffcb6b
+!*.color11:      #ffe585
 
 ! blue
-*.color4:       #82aaff
-*.color12:      #9cc4ff
+!*.color4:       #82aaff
+!*.color12:      #9cc4ff
 
 ! magenta
-*.color5:       #c792ea
-*.color13:      #e1acff
+!*.color5:       #c792ea
+!*.color13:      #e1acff
 
 ! cyan
-*.color6:       #89ddff
-*.color14:      #a3f7ff
+!*.color6:       #89ddff
+!*.color14:      #a3f7ff
 
 ! white
-*.color7:       #d0d0d0
-*.color15:      #ffffff
+!*.color7:       #d0d0d0
+!*.color15:      #ffffff
