@@ -23,7 +23,7 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;;
 (setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :weight 'Regular :size 18)
-        doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :weight 'Thin :size 18)
+        doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :weight 'Light :size 18)
         doom-big-font (font-spec :family "Iosevka Etoile" :weight 'Regular :size 24))
 ;;(setq doom-font (font-spec :family "UbuntuMono Nerd Font Mono" :size 18))
 
@@ -33,9 +33,19 @@
 ;;(setq doom-theme 'doom-gruvbox)
 ;;(setq doom-theme 'doom-nord)
 ;;(setq doom-theme 'doom-solarized-dark)
-(setq doom-theme 'doom-one)
+;;(setq doom-theme 'doom-one)
 ;;(setq doom-theme 'doom-tomorrow-night)
 ;;(setq doom-theme 'doom-twilight)
+
+(with-eval-after-load 'modus-themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-region '(bg-only no-extend))
+
+  ;; Load the theme files before enabling a theme
+  (modus-themes-load-themes))
+
+(modus-themes-load-vivendi)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -162,7 +172,7 @@
   (setq org-roam-dailies-capture-templates
         '(("j" "journal" entry "%?"
                 :if-new (file+head "%<%Y-%m-%d>.org"
-                        "#+title: %<%Y-%m-%d>\n\n* Tasks\n** today\n** optionals\n** sprint goals\n* What happened today")))))
+                        "#+title: %<%Y-%m-%d>\n\n* What happened today")))))
           ;; ("t" "todos" entry "* TODO %?"
           ;;       :if-new (file+head+olp "%<%Y-%m-%d>.org"
           ;;               "#+title: %<%Y-%m-%d>\n"
