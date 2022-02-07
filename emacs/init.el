@@ -81,12 +81,27 @@
   :ensure t
   :init (doom-modeline-mode 1))
 
-(use-package doom-themes
+(use-package doom-themes)
   ;;:init (load-theme 'doom-snazzy t)
   ;;:init (load-theme 'doom-gruvbox t)
   ;;:init (load-theme 'doom-horizon t)
   ;;:init (load-theme 'doom-palenight t)
-  :init (load-theme 'doom-tomorrow-night t))
+  ;;:init (load-theme 'doom-tomorrow-night t))
+
+(use-package modus-themes
+  :init
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        ;;modus-themes-region '(bg-only no-extend)
+        modus-themes-org-blocks 'gray-background)
+
+  ;; Load the theme files before enabling a theme
+  (modus-themes-load-themes)
+  :config
+  ;; Load the theme of your choice:
+  (modus-themes-load-vivendi) ;; OR (modus-themes-load-vivendi)
+  :bind ("<f5>" . modus-themes-toggle))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -140,6 +155,48 @@
 
 ;; forge: allows you to use a lot of github features from within emacs
 ;; (use-package forge)
+
+(defun efs/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :hook (lsp-mode . efs/lsp-mode-setup)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (lsp-enable-which-key-integration t))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-doc-position 'bottom))
+
+(use-package lsp-ivy)
+
+(use-package evil-nerd-commenter
+  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+
+(use-package typescript-mode
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
+
+(use-package js2-mode
+  :mode "\\.js\\'"
+  :hook (js2-mode . lsp-deferred))
+
+(use-package company
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 (defun efs/org-mode-setup ()
   (org-indent-mode)

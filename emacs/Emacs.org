@@ -1,8 +1,9 @@
 #+title: Emacs From Scratch Configuration
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
-* TODO add :mkdirp yes once you figure out stow
+* TODO add ':mkdirp yes' to above properties once you figure out stow
 * Vanilla UI Configuration
+
 Disable some of the unwanted GUI elements to start. Enable column numbers globally. Disable for certain major modes.
 
 TODO: Create conditional to disable ~visible-bell~ on MacOS
@@ -47,6 +48,7 @@ Setting the fonts default size. Setting the ~default~, ~variable-pitch~, and ~fi
 #+end_src
 
 * Package Management
+
 Initialize the package repos. Refresh package contents if archive is nil.
 
 #+begin_src emacs-lisp
@@ -72,7 +74,9 @@ Initialize the package repos. Refresh package contents if archive is nil.
 #+end_src
 
 * UI Configuration
+
 ** Ivy and Counsel
+
 ~counsel~ is a drop-in replacement for some searching and file finding default emacs programs. It also contains ~ivy~, which is a minimal completion system.
 
 #+begin_src emacs-lisp
@@ -95,7 +99,9 @@ Initialize the package repos. Refresh package contents if archive is nil.
 #+end_src
 
 *** Ivy Rich
+
 Returns more rich text in outputs.
+
 #+begin_src emacs-lisp
   (use-package ivy-rich
     :init
@@ -104,7 +110,9 @@ Returns more rich text in outputs.
 #+end_src
 
 *** Helpful
+
 In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output in completion menus.
+
 #+begin_src emacs-lisp
   (use-package helpful
     :ensure t
@@ -120,7 +128,9 @@ In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output
 #+end_src
 
 ** Modeline
+
 ~doom-modeline~ for modeline styling. ~all-the-icons~ ensures the icons are installed.
+
 #+begin_src emacs-lisp
   ;; NOTE: The fist time you load this on a new machine, be sure to run:
   ;; M-x all-the-icons-install-fonts
@@ -133,14 +143,36 @@ In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output
 #+end_src
 
 ** Theming
+
 ~doom-themes~ is a theme library for a lot of different themes.
+
 #+begin_src emacs-lisp
-  (use-package doom-themes
+  (use-package doom-themes)
     ;;:init (load-theme 'doom-snazzy t)
     ;;:init (load-theme 'doom-gruvbox t)
     ;;:init (load-theme 'doom-horizon t)
     ;;:init (load-theme 'doom-palenight t)
-    :init (load-theme 'doom-tomorrow-night t))
+    ;;:init (load-theme 'doom-tomorrow-night t))
+
+#+end_src
+
+~modus-themes~ is a full light and dark theme for emacs. The two main goals of the project are to deliver highest contrast for readability and integrate as many packages in Emacs as possible. Written by [[https://protesilaos.com/emacs/modus-themes][Protesilaos]].
+
+#+begin_src emacs-lisp
+    (use-package modus-themes
+      :init
+      ;; Add all your customizations prior to loading the themes
+      (setq modus-themes-italic-constructs t
+            modus-themes-bold-constructs nil
+            ;;modus-themes-region '(bg-only no-extend)
+            modus-themes-org-blocks 'gray-background)
+
+      ;; Load the theme files before enabling a theme
+      (modus-themes-load-themes)
+      :config
+      ;; Load the theme of your choice:
+      (modus-themes-load-vivendi) ;; OR (modus-themes-load-vivendi)
+      :bind ("<f5>" . modus-themes-toggle))
 
 #+end_src
 
@@ -196,7 +228,8 @@ All keybinds are handled by ~general~. Leader key is assigned to ~C-c~, since it
 
 #+end_src
 
-* Project Management
+* Development Tools
+** Projectile
 ~projectile~ gives additional project management tools.
 #+begin_src emacs-lisp
   (use-package projectile
@@ -235,7 +268,71 @@ I honestly forgot what this package does, but I kept it in there to check it out
 
 #+end_src
 
+** TODO Language Servers
+
+Lsp configuration. Moving default ~s-l~ binding to ~C-c l~ to prevent conflicts with wm bindings. Breadcrumb mode on by default. ~lsp-ui~ doc window opens at the bottom. ~lsp-ivy~ does ivy search across project context. ~evil-nerd-commenter~ does what builtin ~M-;~ does, but a little better.
+
+#+begin_src emacs-lisp
+  (defun efs/lsp-mode-setup ()
+    (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+    (lsp-headerline-breadcrumb-mode))
+
+  (use-package lsp-mode
+    :commands (lsp lsp-deferred)
+    :hook (lsp-mode . efs/lsp-mode-setup)
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    :config
+    (lsp-enable-which-key-integration t))
+
+  (use-package lsp-ui
+    :hook (lsp-mode . lsp-ui-mode)
+    :config
+    (setq lsp-ui-doc-position 'bottom))
+
+  (use-package lsp-ivy)
+
+  (use-package evil-nerd-commenter
+    :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+
+#+end_src
+
+*** Typescript
+
+#+begin_src emacs-lisp
+  (use-package typescript-mode
+    :mode "\\.ts\\'"
+    :hook (typescript-mode . lsp-deferred)
+    :config
+    (setq typescript-indent-level 2))
+#+end_src
+
+*** Javascript
+
+#+begin_src emacs-lisp
+  (use-package js2-mode
+    :mode "\\.js\\'"
+    :hook (js2-mode . lsp-deferred))
+#+end_src
+
+** Company mode
+
+Company mode allows automatic appearance of completion-at-point popup list while typing
+
+#+begin_src emacs-lisp
+  (use-package company
+    :after lsp-mode
+    :hook (lsp-mode . company-mode)
+    :custom
+    (company-minimum-prefix-length 1)
+    (company-idle-delay 0.0))
+
+  (use-package company-box
+    :hook (company-mode . company-box-mode))
+#+end_src
+
 * Org Mode
+
 No introduction needed. Not even going to attempt to contain all ~org-mode~ does into a sentence.
 
 ** Basic Config
