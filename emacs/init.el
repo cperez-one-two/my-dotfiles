@@ -5,7 +5,8 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (menu-bar-mode -1)
-(setq visible-bell t)
+(unless (eq system-type 'darwin)
+  (setq visible-bell t))
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
@@ -18,13 +19,20 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; font
- (defvar efs/default-font-size 140)
- (defvar efs/default-variable-font-size 140)
+(cond
+  ((eq system-type 'gnu/linux)
+    (defvar efs/default-font-size 140)
+    (defvar efs/default-variable-font-size 140))
+  ((eq system-type 'darwin)
+    (defvar efs/default-font-size 180)
+    (defvar efs/default-variable-font-size 180))
+  (t
+    (message "Config for unknown system type.")))
 
- ;; later used to configure UI elements
- ;; (set-face-attribute 'default nil :font "TerminessTTF Nerd Font Mono" :height efs/default-font-size)
- ;; (set-face-attribute 'fixed-pitch nil :font "TerminessTTF Nerd Font Mono" :height efs/default-font-size)
- ;; (set-face-attribute 'variable-pitch nil :font "TerminessTTF Nerd Font Mono" :height efs/default-variable-font-size :weight 'medium)
+;; later used to configure UI elements
+;; (set-face-attribute 'default nil :font "TerminessTTF Nerd Font Mono" :height efs/default-font-size)
+;; (set-face-attribute 'fixed-pitch nil :font "TerminessTTF Nerd Font Mono" :height efs/default-font-size)
+;; (set-face-attribute 'variable-pitch nil :font "TerminessTTF Nerd Font Mono" :height efs/default-variable-font-size :weight 'medium)
 (set-face-attribute 'default nil :font "Iosevka Nerd Font Mono" :height efs/default-font-size)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka Nerd Font Mono" :height efs/default-font-size)
 (set-face-attribute 'variable-pitch nil :font "Iosevka" :height efs/default-variable-font-size :weight 'medium)
@@ -61,6 +69,16 @@
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
+
+;; ;; TODO: Research configuration options
+;; (use-package ivy-prescient
+;;   :after counsel
+;;   :custom
+;;   (ivy-prescient-enable-filtering nil)
+;;   :config
+;;   ;; Uncomment the following line to have sorting remembered across sessions!
+;;   ;(prescient-persist-mode 1)
+;;   (ivy-prescient-mode 1))
 
 (use-package helpful
   :ensure t
