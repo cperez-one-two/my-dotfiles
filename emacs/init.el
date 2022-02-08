@@ -216,6 +216,12 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
+(use-package vterm
+  :commands vterm
+  :config
+  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
+  (setq vterm-max-scrollback 10000))
+
 (defun efs/org-mode-setup ()
   (org-indent-mode)
   ;(variable-pitch-mode 1)

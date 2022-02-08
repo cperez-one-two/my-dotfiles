@@ -364,6 +364,27 @@ Company mode allows automatic appearance of completion-at-point popup list while
     :hook (company-mode . company-box-mode))
 #+end_src
 
+* Terminals
+
+** vterm
+
+~vterm~ is a native C-compiled terminal emulator that is much faster than ~term~. Gives you the closest terminal experience within emacs.
+
+Since it is natively compiled, it has a few requirements:
+- ~libtool-bin~
+- ~cmake~
+- ~libvterm~
+
+#+begin_src emacs-lisp
+
+  (use-package vterm
+    :commands vterm
+    :config
+    (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
+    (setq vterm-max-scrollback 10000))
+
+#+end_src
+
 * Org Mode
 
 No introduction needed. Not even going to attempt to contain all ~org-mode~ does into a sentence.
