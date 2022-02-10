@@ -71,15 +71,14 @@
   :init
   (ivy-rich-mode 1))
 
-;; ;; TODO: Research configuration options
-;; (use-package ivy-prescient
-;;   :after counsel
-;;   :custom
-;;   (ivy-prescient-enable-filtering nil)
-;;   :config
-;;   ;; Uncomment the following line to have sorting remembered across sessions!
-;;   ;(prescient-persist-mode 1)
-;;   (ivy-prescient-mode 1))
+(use-package ivy-prescient
+  :after counsel
+  ;; :custom
+  ;; (ivy-prescient-enable-filtering nil)
+  :config
+  ;; Uncomment the following line to have sorting remembered across sessions!
+  (prescient-persist-mode 1)
+  (ivy-prescient-mode 1))
 
 (use-package helpful
   :ensure t
@@ -130,6 +129,8 @@
   :diminish which-key-mode
   :config
   (setq which-key-idle-delay 1.2))
+
+(use-package rainbow-mode)
 
 (use-package general
   :config
@@ -217,11 +218,47 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
+(use-package company-prescient
+  :after company
+  :config
+  (company-prescient-mode 1))
+
 (use-package vterm
   :commands vterm
   :config
   (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
   (setq vterm-max-scrollback 10000))
+
+(defun efs/configure-eshell ()
+  ;; Save command history when commands are entered
+  (add-hook 'eshell-pre-command-hook 'eshell-save-some-history)
+
+  ;; Truncate buffer for performance
+  (add-to-list 'eshell-output-filter-functions 'eshell-truncate-buffer)
+
+  (setq eshell-history-size         10000
+        eshell-buffer-maximum-lines 10000
+        eshell-hist-ignoredups t
+        eshell-scroll-to-bottom-on-input t))
+
+(use-package eshell-git-prompt
+  :after eshell)
+
+(use-package eshell
+  :hook (eshell-first-time-mode . efs/configure-eshell)
+  :config
+
+  (with-eval-after-load 'esh-opt
+    (setq eshell-destroy-buffer-when-process-dies t)
+    (setq eshell-visual-commands '("htop" "zsh" "vim")))
+
+  (eshell-git-prompt-use-theme 'powerline))
+
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :custom ((dired-listing-switches "-agho --group-directories-first")))
 
 (defun efs/org-mode-setup ()
   (org-indent-mode)

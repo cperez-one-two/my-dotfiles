@@ -32,6 +32,7 @@ Added conditional to disable ~visible-bell~ on MacOS
 #+end_src
 
 ** Font
+
 Setting the fonts default size. Different settings for macOS and GNU/Linux. Setting the ~default~, ~variable-pitch~, and ~fixed-pitch~ fonts for use later in config.
 
 #+begin_src emacs-lisp
@@ -122,16 +123,29 @@ Returns more rich text in outputs.
 
 ~prescient.el~ provides some helpful behavior for sorting Ivy completion candidates based on how recently or frequently you select them. This can be especially helpful when using M-x to run commands that you don’t have bound to a key but still need to access occasionally.
 
+The ~prescient-filter-method~ changes the filtering behavior. The following options are available:
+
+- literal :: Default. Matches on literal substring of candidate. Supports char folding.
+  
+- initialism :: Default. Matches on initials of the candidate.
+
+- prefix :: Like ~initialism~, but requires same delimiter as candidate separate the initials in query. (i.e. '-')
+
+- anchored :: Like ~prefix~, but querying capital letters allow you to skip typing in the delimiter.
+
+- fuzzy :: Matches same characters in query, even if not contiguous.
+
+- regexp :: Default. Allows for use of regex in query.
+  
 #+begin_src emacs-lisp
-  ;; ;; TODO: Research configuration options
-  ;; (use-package ivy-prescient
-  ;;   :after counsel
-  ;;   :custom
-  ;;   (ivy-prescient-enable-filtering nil)
-  ;;   :config
-  ;;   ;; Uncomment the following line to have sorting remembered across sessions!
-  ;;   ;(prescient-persist-mode 1)
-  ;;   (ivy-prescient-mode 1))
+  (use-package ivy-prescient
+    :after counsel
+    ;; :custom
+    ;; (ivy-prescient-enable-filtering nil)
+    :config
+    ;; Uncomment the following line to have sorting remembered across sessions!
+    (prescient-persist-mode 1)
+    (ivy-prescient-mode 1))
 
 #+end_src
 
@@ -210,13 +224,24 @@ In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output
 #+end_src
 
 ** which-key
+
 ~which-key~ shows a minibuffer of all your keybinds.
+
 #+begin_src emacs-lisp
   (use-package which-key
     :init (which-key-mode)
     :diminish which-key-mode
     :config
     (setq which-key-idle-delay 1.2))
+
+#+end_src
+
+** Coloring Hex Values
+
+~rainbow-mode~ is a minor mode that colors hex values in the buffer for a quick color preview.
+
+#+begin_src emacs-lisp
+  (use-package rainbow-mode)
 
 #+end_src
 
@@ -351,7 +376,9 @@ Lsp configuration. Moving default ~s-l~ binding to ~C-c l~ to prevent conflicts 
 
 ** Company mode
 
-Company mode allows automatic appearance of completion-at-point popup list while typing
+Company mode allows automatic appearance of completion-at-point popup list while typing.
+
+~company-prescient~ is a package that provides ~prescient~ frequency sorting within completion popups.
 
 #+begin_src emacs-lisp
   (use-package company
@@ -363,6 +390,12 @@ Company mode allows automatic appearance of completion-at-point popup list while
 
   (use-package company-box
     :hook (company-mode . company-box-mode))
+
+  (use-package company-prescient
+    :after company
+    :config
+    (company-prescient-mode 1))
+
 #+end_src
 
 * Terminals
@@ -383,6 +416,54 @@ Since it is natively compiled, it has a few requirements:
     :config
     (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *")
     (setq vterm-max-scrollback 10000))
+
+#+end_src
+
+** eshell
+
+~eshell~ is a standalone shell written in emacs lisp. It is OS-independent since the shell and all accompanying commands are written in emacs lisp.
+
+#+begin_src emacs-lisp
+  (defun efs/configure-eshell ()
+    ;; Save command history when commands are entered
+    (add-hook 'eshell-pre-command-hook 'eshell-save-some-history)
+
+    ;; Truncate buffer for performance
+    (add-to-list 'eshell-output-filter-functions 'eshell-truncate-buffer)
+
+    (setq eshell-history-size         10000
+          eshell-buffer-maximum-lines 10000
+          eshell-hist-ignoredups t
+          eshell-scroll-to-bottom-on-input t))
+
+  (use-package eshell-git-prompt
+    :after eshell)
+
+  (use-package eshell
+    :hook (eshell-first-time-mode . efs/configure-eshell)
+    :config
+
+    (with-eval-after-load 'esh-opt
+      (setq eshell-destroy-buffer-when-process-dies t)
+      (setq eshell-visual-commands '("htop" "zsh" "vim")))
+
+    (eshell-git-prompt-use-theme 'powerline))
+
+#+end_src
+
+* File Management
+
+** Dired
+
+The default file manager in emacs. Allows for quick and easy file management.
+
+#+begin_src emacs-lisp
+
+  (use-package dired
+    :ensure nil
+    :commands (dired dired-jump)
+    :bind (("C-x C-j" . dired-jump))
+    :custom ((dired-listing-switches "-agho --group-directories-first")))
 
 #+end_src
 
