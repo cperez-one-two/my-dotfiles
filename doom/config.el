@@ -170,9 +170,16 @@
            :unnarrowed t)))
   (setq org-roam-dailies-directory "daily/")
   (setq org-roam-dailies-capture-templates
-        '(("j" "journal" entry "%?"
-                :if-new (file+head "%<%Y-%m-%d>.org"
-                        "#+title: %<%Y-%m-%d>\n\n* What happened today")))))
+        '(("d" "default" entry
+           "%?"
+           :if-new (file+head "%<%Y-%m-%d>.org"
+                              "#+title: %<%Y-%m-%d>\n\n* What happened today")
+           :unnarrowed t))))
+        ;; ("e" "entry" entry
+        ;;    "* %?"
+        ;;    :target (file+head "%<%Y-%m-%d>.org"
+        ;;                       "#+title: %<%Y-%m-%d>\n\n* What happened today")
+        ;;    :unnarrowed t))))
           ;; ("t" "todos" entry "* TODO %?"
           ;;       :if-new (file+head+olp "%<%Y-%m-%d>.org"
           ;;               "#+title: %<%Y-%m-%d>\n"

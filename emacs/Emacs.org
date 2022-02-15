@@ -199,24 +199,25 @@ In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output
 ~modus-themes~ is a full light and dark theme for emacs. The two main goals of the project are to deliver highest contrast for readability and integrate as many packages in Emacs as possible. Written by [[https://protesilaos.com/emacs/modus-themes][Protesilaos]].
 
 #+begin_src emacs-lisp
-    (use-package modus-themes
-      :init
-      ;; Add all your customizations prior to loading the themes
-      (setq modus-themes-italic-constructs t
-            modus-themes-bold-constructs nil
-            ;;modus-themes-region '(bg-only no-extend)
-            modus-themes-org-blocks 'gray-background)
+  (use-package modus-themes
+    :init
+    ;; Add all your customizations prior to loading the themes
+    (setq modus-themes-italic-constructs t
+          modus-themes-bold-constructs nil
+          ;;modus-themes-region '(bg-only no-extend)
+          modus-themes-org-blocks 'gray-background)
 
-      ;; Load the theme files before enabling a theme
-      (modus-themes-load-themes)
-      :config
-      ;; Load the theme of your choice:
-      (modus-themes-load-vivendi) ;; OR (modus-themes-load-vivendi)
-      :bind ("<f5>" . modus-themes-toggle))
+    ;; Load the theme files before enabling a theme
+    (modus-themes-load-themes)
+    :config
+    ;; Load the theme of your choice:
+    (modus-themes-load-vivendi) ;; OR (modus-themes-load-vivendi)
+    :bind ("<f5>" . modus-themes-toggle))
 
 #+end_src
 
 *** Rainbow Delimiters
+
 #+begin_src emacs-lisp
   (use-package rainbow-delimiters
     :hook (prog-mode . rainbow-delimiters-mode))
@@ -246,6 +247,7 @@ In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output
 #+end_src
 
 * Keybinds
+
 All keybinds are handled by ~general~. Leader key is assigned to ~C-c~, since it's the default and I want to make sure I don't overwrite package keybinds.
 #+begin_src emacs-lisp
   (use-package general
@@ -260,6 +262,7 @@ All keybinds are handled by ~general~. Leader key is assigned to ~C-c~, since it
 #+end_src
 
 ** Hydra
+
 ~hydra~ is a package that allows for toggle binds. Toggling on a hydra allows binds that require rapid succession to be hit quickly.
 #+begin_src emacs-lisp
   (use-package hydra)
@@ -463,7 +466,11 @@ The default file manager in emacs. Allows for quick and easy file management.
     :ensure nil
     :commands (dired dired-jump)
     :bind (("C-x C-j" . dired-jump))
-    :custom ((dired-listing-switches "-agho --group-directories-first")))
+    :custom
+    ((cond ((eq system-type 'darwin)
+            (dired-listing-switches "-ahlF"))
+           ((eq system-type 'gnu/linux)
+            (dired-listing-switches "-ahl --group-directories-first")))))
 
 #+end_src
 

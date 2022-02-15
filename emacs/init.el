@@ -258,7 +258,11 @@
   :ensure nil
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump))
-  :custom ((dired-listing-switches "-agho --group-directories-first")))
+  :custom
+  ((cond ((eq system-type 'darwin)
+          (dired-listing-switches "-ahlF"))
+         ((eq system-type 'gnu/linux)
+          (dired-listing-switches "-ahl --group-directories-first")))))
 
 (defun efs/org-mode-setup ()
   (org-indent-mode)
