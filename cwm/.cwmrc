@@ -32,17 +32,17 @@ bind-key 4S-9 window-movetogroup-9
 
 # keybinds
 bind-key 4-d menu-cmd
-bind-key 4-Tab window-cycle
-bind-key 4S-Tab window-rcycle
-bind-key 4M-Tab group-cycle
-bind-key 4MS-Tab group-rcycle
+bind-key M-Tab window-cycle
+bind-key MS-Tab window-rcycle
+bind-key 4-Tab group-cycle
+bind-key 4S-Tab group-rcycle
 bind-key 4-m window-maximize
 bind-key 4M-v window-vmaximize
 bind-key 4M-h window-hmaximize
-bind-key 4-n window-snap-down 
+bind-key 4-n window-snap-down
 bind-key 4-p window-snap-up
 bind-key 4-b window-snap-left
-bind-key 4-f window-snap-right 
+bind-key 4-f window-snap-right
 bind-key 4-w window-close
 bind-key 4-s window-stick
 bind-key 4-h window-hide
@@ -96,9 +96,16 @@ autogroup 0 "megasync,MEGAsync"
 # color activeborder      "#c792ea"
 # color inactiveborder    "#292d3e"
 # Tomorrow dark
-color menufg  "#c5c8c6"
-color menubg  "#1d1f21"
-color font    "#c5c8c6"
-color selfont "#1d1f21"
-color activeborder      "#81a2be"
-color inactiveborder    "#1d1f21"
+#color menufg  "#c5c8c6"
+#color menubg  "#1d1f21"
+#color font    "#c5c8c6"
+#color selfont "#1d1f21"
+#color activeborder      "#81a2be"
+#color inactiveborder    "#1d1f21"
+# Modus-vivendi
+color menufg  "#ffffff"
+color menubg  "#000000"
+color font    "#ffffff"
+color selfont "#000000"
+color activeborder      "#ffffff"
+color inactiveborder    "#000000"
