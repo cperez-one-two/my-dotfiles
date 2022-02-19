@@ -966,7 +966,7 @@ schemes:
     # Colors the cursor will use if `custom_cursor_colors` is true
     cursor:
       text: '#1d1f21'
-      cursor: '#c5c8c6'
+      cursor: '#81a2be'
 
     # Normal colors
     normal:
@@ -990,6 +990,39 @@ schemes:
       cyan:    '#8abeb7'
       white:   '#c5c8c6'
 
+  ### Modus-vivendi ###
+  modus-vivendi: &modus-vivendi
+    # Default colors
+    primary:
+      background: '#000000'
+      foreground: '#ffffff'
+
+    # Colors the cursor will use if `custom_cursor_colors` is true
+    cursor:
+      text: '#000000'
+      cursor: '#ffffff'
+
+    # Normal colors
+    normal:
+      black:   '0x100f10'
+      red:     '0xff8059'
+      green:   '0x44bc44'
+      yellow:  '0xd0bc00'
+      blue:    '0x2fafff'
+      magenta: '0xfeacd0'
+      cyan:    '0x00d3d0'
+      white:   '0xa8a8a8'
+
+    # Bright colors
+    bright:
+      black:   '0x191a1b'
+      red:     '0xfe6060'
+      green:   '0x4fe42f'
+      yellow:  '0xf0dd60'
+      blue:    '0x4fafff'
+      magenta: '0xff62d4'
+      cyan:    '0x3fdfd0'
+      white:   '0xe0e6f0'
 
 ######################################################################
 ## SET THEME: Choose ONE color scheme from those in the above list. ##
@@ -1006,7 +1039,7 @@ schemes:
 # *solarized-dark
 # *tomorrow-night
 
-colors: *tomorrow-night
+colors: *modus-vivendi
 
 #######################################
 ##       END OF COLOR SCHEMES        ##
