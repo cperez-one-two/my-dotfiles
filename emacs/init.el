@@ -19,6 +19,15 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; auto-revert dired and other buffers
+(setq global-auto-revert-non-file-buffers t)
+
+;; auto-revert file buffers on changes from elsewhere
+(global-auto-revert-mode 1)
+
+  ;; spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
 ;; font
 (cond
   ((eq system-type 'gnu/linux)

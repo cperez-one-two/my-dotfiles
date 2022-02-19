@@ -2,11 +2,14 @@
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
 * TODO add ':mkdirp yes' to above properties once you figure out stow
-* Vanilla UI Configuration
+* Vanilla Configuration
+
+** UI
 
 Disable some of the unwanted GUI elements to start. Enable column numbers globally. Disable for certain major modes.
 
-Added conditional to disable ~visible-bell~ on MacOS
+Added conditional to disable ~visible-bell~ on MacOS.
+
 #+begin_src emacs-lisp
   ;; chrisPmacs
   ;; remove default fluff
@@ -28,6 +31,22 @@ Added conditional to disable ~visible-bell~ on MacOS
                   shell-mode-hook
                   eshell-mode-hook))
     (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+#+end_src
+
+** Default Settings
+
+Some default settings for non-visual elements.
+
+#+begin_src emacs-lisp
+  ;; auto-revert dired and other buffers
+  (setq global-auto-revert-non-file-buffers t)
+
+  ;; auto-revert file buffers on changes from elsewhere
+  (global-auto-revert-mode 1)
+
+    ;; spaces instead of tabs
+  (setq-default indent-tabs-mode nil)
 
 #+end_src
 
@@ -56,6 +75,7 @@ Setting the fonts default size. Different settings for macOS and GNU/Linux. Sett
   (set-face-attribute 'variable-pitch nil :font "Iosevka" :height efs/default-variable-font-size :weight 'medium)
 
 #+end_src
+
 
 * Package Management
 
@@ -249,6 +269,7 @@ In conjuction with ~ivy~ and ~counsel~, ~helpful~ produces more 'helpful' output
 * Keybinds
 
 All keybinds are handled by ~general~. Leader key is assigned to ~C-c~, since it's the default and I want to make sure I don't overwrite package keybinds.
+
 #+begin_src emacs-lisp
   (use-package general
     :config
