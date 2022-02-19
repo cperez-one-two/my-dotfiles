@@ -10,32 +10,32 @@
 !*foreground: #d8dee9
 !*background: #2e3440
 ! Tomorrow Dark
-*foreground: #c5c8c6
-*background: #1d1f21
+!*foreground: #c5c8c6
+!*background: #1d1f21
 ! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
+!*color0:  #282828
+!*color8:  #928374
 ! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
+!*color1:  #cc241d
+!*color9:  #fb4934
 ! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
+!*color2:  #98971a
+!*color10: #b8bb26
 ! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
+!*color3:  #d79921
+!*color11: #fabd2f
 ! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
+!*color4:  #458588
+!*color12: #83a598
 ! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
+!*color5:  #b16286
+!*color13: #d3869b
 ! DarkCyan + Cyan
-*color6:  #689d6a
-*color14: #8ec07c
+!*color6:  #689d6a
+!*color14: #8ec07c
 ! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+!*color7:  #a89984
+!*color15: #ebdbb2
 ! Twilight Dark
 ! special
 ! *.foreground:   #a7a7a7
@@ -110,3 +110,42 @@
 ! white
 !*.color7:       #d0d0d0
 !*.color15:      #ffffff
+! special
+
+!! modus-vivendi
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #1e1e1e
+*.color8:       #595959
+
+! red
+*.color1:       #ff8059
+*.color9:       #ef8b50
+
+! green
+*.color2:       #44bc44
+*.color10:      #70b900
+
+! yellow
+*.color3:       #d0bc00
+*.color11:      #c0c530
+
+! blue
+*.color4:       #2fafff
+*.color12:      #79a8ff
+
+! magenta
+*.color5:       #feacd0
+*.color13:      #f78fe7
+
+! cyan
+*.color6:       #00d3d0
+*.color14:      #4ae2f0
+
+! white
+*.color7:       #a8a8a8
+*.color15:      #e0e6f0
